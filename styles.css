@@ -1,248 +1,242 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --black: #0c0c0c;
-  --dark: #141414;
-  --dark2: #1c1c1c;
-  --gold: #c9a84c;
-  --gold-light: #e8c97a;
-  --gold-dim: #8a6e2f;
-  --white: #f8f6f1;
-  --off-white: #e8e4da;
-  --gray: #666;
-  --gray-light: #333;
+  --cream: #faf8f4;
+  --warm-white: #f5f1ea;
+  --black: #111110;
+  --dark: #1a1a18;
+  --gold: #b8892a;
+  --gold-light: #d4a84b;
+  --gold-pale: #f0e4c4;
+  --text: #2a2a27;
+  --text-mid: #555550;
+  --text-light: #888880;
+  --border: rgba(100,90,60,0.15);
+  --border-gold: rgba(184,137,42,0.3);
 }
+
 html { scroll-behavior: smooth; }
+
 body {
   font-family: 'Heebo', sans-serif;
-  background: var(--black);
-  color: var(--white);
+  background: var(--cream);
+  color: var(--text);
   direction: rtl;
   text-align: right;
   overflow-x: hidden;
   font-weight: 300;
 }
 
-/* ── NAV ─────────────────────────────────────────────── */
-nav { position: fixed; top: 0; right: 0; left: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 4rem; background: rgba(12,12,12,0.96); border-bottom: 1px solid rgba(201,168,76,0.15); }
-.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 4px; color: var(--gold); }
+/* ── NAV ─────────────────────────────────── */
+nav {
+  position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 4rem;
+  background: rgba(250,248,244,0.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 4px; color: var(--black); }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a { color: #888; text-decoration: none; font-size: 0.82rem; font-weight: 400; letter-spacing: 1.5px; transition: color 0.2s; }
+.nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.82rem; font-weight: 400; letter-spacing: 1.5px; transition: color 0.2s; }
 .nav-links a:hover { color: var(--gold); }
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-.hamburger span { display: block; width: 22px; height: 2px; background: var(--gold); transition: all 0.3s; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--black); transition: all 0.3s; }
 .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-.mobile-menu { display: none; position: fixed; top: 0; right: 0; left: 0; bottom: 0; background: rgba(12,12,12,0.98); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+.mobile-menu {
+  display: none; position: fixed; top: 0; right: 0; left: 0; bottom: 0;
+  background: var(--cream); z-index: 99;
+  flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+}
 .mobile-menu.open { display: flex; }
-.mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.5rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: 4px; transition: color 0.2s; }
+.mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.5rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: 4px; transition: color 0.2s; }
 .mobile-menu a:hover { color: var(--gold); }
 
-/* ══════════════════════════════════════════════════════
-   HERO — DESKTOP
-
-   Two-column grid. direction:ltr is set on .hero so that
-   grid columns are ordered physically left→right regardless
-   of the page's RTL direction. Each child restores dir:rtl.
-
-   Left  column (55%) — hero-image-panel: contained photo,
-     fills the full column height. No overlay, no full-bleed.
-   Right column (45%) — hero-text: solid black, text centred.
-   ══════════════════════════════════════════════════════ */
+/* ── HERO ──────────────────────────────────
+   Desktop: full-bleed photo LEFT (55%), warm text RIGHT (45%)
+   ─────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
   padding-top: 68px;
-
-  /* creates 2 columns */
   display: grid;
-
-  /* LEFT = image / RIGHT = text */
   grid-template-columns: 55% 45%;
-
-  /* keeps image physically on left side */
   direction: ltr;
-
-  background: var(--black);
+  background: var(--cream);
 }
 
-
-/* IMAGE COLUMN */
 .hero-image-panel {
   direction: rtl;
   position: relative;
-
-  /* hides anything outside the frame */
   overflow: hidden;
 }
-
-
-/* THE ACTUAL IMAGE */
 .hero-image-panel img {
-  width: 100%;
-  height: 100%;
-
-  /* fills entire area */
+  width: 100%; height: 100%;
   object-fit: cover;
-
-  /*
-    THIS IS THE MAIN CONTROL
-
-    first value = left/right
-    second value = up/down
-  */
-
-  /* move image LEFT */
   object-position: 20% center;
-
-  /*
-    cinematic luxury effect
-  */
-  transform: scale(1.03);
-
-  /*
-    darkens image slightly
-  */
-  filter: brightness(0.88);
-
+  transform: scale(1.02);
   display: block;
 }
+.hero-image-panel::after { content: ''; position: absolute; inset: 0; display: none; }
 
-
-/* OVERLAY */
-.hero-image-panel::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-
-  /* currently disabled */
-  display: none;
-}
-
-/* Text column — right column on desktop */
 .hero-text {
   direction: rtl;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 3rem 4rem;
-  background: var(--black);
+  background: var(--cream);
 }
 
-.hero-tag { font-size: 0.72rem; font-weight: 400; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; }
-.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: 0.95; letter-spacing: 1px; color: var(--white); margin-bottom: 1.5rem; }
+.hero-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: 0.95; letter-spacing: 1px; color: var(--black); margin-bottom: 1.5rem; }
 .hero-title em { color: var(--gold); font-style: normal; }
-.hero-sub { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.9; margin-bottom: 2.5rem; font-weight: 300; }
+.hero-sub { font-size: 1rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 2.5rem; font-weight: 300; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* BUTTONS */
-.btn-gold { background: var(--gold); color: var(--black); border: none; padding: 0.8rem 2rem; font-family: 'Heebo', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; -webkit-tap-highlight-color: transparent; }
+/* ── BUTTONS ──────────────────────────────── */
+.btn-gold {
+  background: var(--gold); color: #fff; border: none;
+  padding: 0.85rem 2rem; font-family: 'Heebo', sans-serif;
+  font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  letter-spacing: 0.5px; transition: background 0.2s, transform 0.15s;
+  text-decoration: none; display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
 .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
-.btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(201,168,76,0.4); padding: 0.8rem 2rem; font-family: 'Heebo', sans-serif; font-size: 0.9rem; font-weight: 400; cursor: pointer; letter-spacing: 0.5px; transition: border-color 0.2s, color 0.2s, transform 0.15s; text-decoration: none; display: inline-block; -webkit-tap-highlight-color: transparent; }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-outline {
+  background: transparent; color: var(--text); border: 1.5px solid var(--border-gold);
+  padding: 0.85rem 2rem; font-family: 'Heebo', sans-serif;
+  font-size: 0.9rem; font-weight: 400; cursor: pointer;
+  letter-spacing: 0.5px; transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  text-decoration: none; display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
 
-/* SECTION BASE */
-.section { padding: 7rem 4rem; }
-.section-label { font-size: 0.7rem; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; display: flex; align-items: center; gap: 1.2rem; }
-.section-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
-.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; letter-spacing: 1px; margin-bottom: 2rem; }
+/* ── SECTION BASE ─────────────────────────── */
+.section { padding: 7rem 4rem; background: var(--cream); }
+.section-label {
+  font-size: 0.7rem; letter-spacing: 5px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1.2rem;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border-gold); }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; letter-spacing: 1px; margin-bottom: 2rem; color: var(--black); }
 
-/* ABOUT */
+/* ── ABOUT ────────────────────────────────── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-.about-text p { font-size: 0.95rem; line-height: 1.9; color: #aaa; margin-bottom: 1.3rem; }
+.about-text p { font-size: 0.95rem; line-height: 1.9; color: var(--text-mid); margin-bottom: 1.3rem; }
 .about-text p:last-child { margin-bottom: 0; }
 .about-image-stack { position: relative; }
 .about-image-stack img { width: 100%; display: block; object-fit: cover; object-position: center 15%; max-height: 420px; }
-.about-image-caption { margin-top: 1rem; font-size: 0.75rem; color: #555; letter-spacing: 1px; text-transform: uppercase; }
+.about-image-caption { margin-top: 1rem; font-size: 0.75rem; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; }
 
-/* BENEFITS — desktop: solid dark, NO photo */
-.dark-section { background: var(--dark); padding: 7rem 4rem; }
+/* ── WHO IS THIS FOR ──────────────────────── */
+#who { background: var(--black) !important; }
+#who .section-title { color: #f5f1ea; }
+#who .section-label { color: var(--gold-light); }
+#who .section-label::after { background: rgba(184,137,42,0.3); }
+.who-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.who-card { transition: background 0.2s; }
+.who-card:hover { background: rgba(201,168,76,0.06); }
+
+/* ── BENEFITS ─────────────────────────────── */
+.dark-section { background: var(--warm-white); padding: 7rem 4rem; }
 #benefits { position: relative; overflow: hidden; width: 100%; }
-.benefits-bg-wrap { display: none; } /* hidden on desktop, shown on mobile */
-.benefits-bg-wrap { position: absolute; inset: 0; z-index: 0; }
+.benefits-bg-wrap { display: none; position: absolute; inset: 0; z-index: 0; }
 .benefits-bg-img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; display: block; }
-.benefits-overlay { position: absolute; inset: 0; background: rgba(12,12,12,0.82); }
+.benefits-overlay { position: absolute; inset: 0; background: rgba(250,248,244,0.88); }
 .benefits-body { position: relative; z-index: 1; }
-.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid rgba(201,168,76,0.12); margin-top: 3rem; }
-.benefit-item { padding: 2.2rem 2.5rem; border-bottom: 1px solid rgba(201,168,76,0.1); border-left: 1px solid rgba(201,168,76,0.1); transition: background 0.2s; }
-.benefit-item:hover { background: rgba(201,168,76,0.06); }
-.benefit-num { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--gold-dim); letter-spacing: 2px; margin-bottom: 0.8rem; }
-.benefit-title { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; text-shadow: 0 1px 6px rgba(0,0,0,0.9); }
-.benefit-desc { font-size: 0.85rem; color: #ccc; line-height: 1.7; text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0; border: 1px solid var(--border); margin-top: 3rem;
+  background: var(--cream);
+}
+.benefit-item {
+  padding: 2.2rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.benefit-item:hover { background: var(--gold-pale); }
+.benefit-num { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 0.8rem; opacity: 0.7; }
+.benefit-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.benefit-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.7; }
 
-/* METHOD */
+/* ── METHOD ───────────────────────────────── */
 .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; margin-top: 3rem; }
-.step { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); align-items: start; }
-.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); opacity: 0.5; padding-top: 2px; }
-.step-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
-.step-desc { font-size: 0.83rem; color: #777; line-height: 1.7; }
+.step {
+  display: grid; grid-template-columns: 2.5rem 1fr;
+  gap: 1.5rem; padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border); align-items: start;
+}
+.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); opacity: 0.6; padding-top: 2px; }
+.step-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text); }
+.step-desc { font-size: 0.83rem; color: var(--text-light); line-height: 1.7; }
 .method-image { overflow: hidden; }
 .method-image img { width: 100%; height: 100%; object-fit: cover; object-position: 30% center; display: block; min-height: 500px; }
 
-/* CTA */
-.cta-section { background: var(--dark2); padding: 7rem 4rem; border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); }
+/* ── CTA ──────────────────────────────────── */
+.cta-section {
+  background: var(--black);
+  padding: 7rem 4rem;
+  border-top: 1px solid rgba(184,137,42,0.2);
+  border-bottom: 1px solid rgba(184,137,42,0.2);
+}
+.cta-section .section-label { color: var(--gold-light); }
+.cta-section .section-label::after { background: rgba(184,137,42,0.3); }
 .cta-inner { max-width: 700px; }
-.cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 1px; color: var(--white); margin-bottom: 1rem; line-height: 1; }
-.cta-title em { color: var(--gold); font-style: normal; }
-.cta-body { font-size: 0.95rem; color: #999; line-height: 1.9; margin-bottom: 2.5rem; max-width: 500px; }
+.cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 1px; color: #f5f1ea; margin-bottom: 1rem; line-height: 1; }
+.cta-title em { color: var(--gold-light); font-style: normal; }
+.cta-body { font-size: 0.95rem; color: #aaa; line-height: 1.9; margin-bottom: 2.5rem; max-width: 500px; }
 .cta-includes { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
-.tag { border: 1px solid rgba(201,168,76,0.3); color: var(--gold); padding: 0.4rem 1rem; font-size: 0.78rem; letter-spacing: 1px; }
+.tag { border: 1px solid rgba(184,137,42,0.35); color: var(--gold-light); padding: 0.4rem 1rem; font-size: 0.78rem; letter-spacing: 1px; }
 
-/* ── FOR WHOM (בוא נהיה כנים) ────────────────────────── */
-.whom-section { padding: 7rem 4rem; }
+/* ── FOR WHOM ─────────────────────────────── */
+.whom-section { padding: 7rem 4rem; background: var(--warm-white); }
 .whom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-.whom-box { padding: 2.5rem; border: 1px solid rgba(255,255,255,0.06); }
-.whom-box.yes { border-color: rgba(201,168,76,0.25); }
+.whom-box { padding: 2.5rem; border: 1px solid var(--border); background: var(--cream); }
+.whom-box.yes { border-color: var(--border-gold); background: #fffdf7; }
 .whom-box-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 1.8rem; }
 .whom-box.yes .whom-box-title { color: var(--gold); }
-.whom-box.no .whom-box-title { color: #444; }
+.whom-box.no .whom-box-title { color: var(--text-light); }
 .whom-list { list-style: none; }
-.whom-list li { font-size: 0.88rem; color: #999; padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 1rem; }
+.whom-list li {
+  font-size: 0.9rem; color: var(--text-mid); padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 0.75rem;
+}
 .whom-list li:last-child { border-bottom: none; }
-.whom-box.yes li::before { content: '✓'; color: var(--gold); font-size: 0.8rem; flex-shrink: 0; }
-.whom-box.no li::before { content: '✗'; color: #444; font-size: 0.8rem; flex-shrink: 0; }
+.whom-list li::before { content: '✓'; color: var(--gold); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+.whom-box.no li::before { content: '✕'; color: var(--text-light); }
 
-/* WHO GRID */
-.who-card { background: var(--black); transition: background 0.25s; -webkit-tap-highlight-color: transparent; }
-.who-card:hover { background: rgba(201,168,76,0.05); }
-.who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid rgba(201,168,76,0.15); }
+/* ── FOOTER ───────────────────────────────── */
+footer { padding: 4rem; text-align: center; background: var(--black); border-top: 1px solid rgba(184,137,42,0.15); }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 6px; color: var(--gold); margin-bottom: 0.5rem; }
+.footer-tag { font-size: 0.8rem; color: #555; letter-spacing: 2px; margin-bottom: 2rem; }
+.footer-bottom { font-size: 0.75rem; color: #444; }
 
-/* FOOTER */
-footer { background: #080808; padding: 4rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
-.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 6px; color: var(--gold); margin-bottom: 0.5rem; }
-.footer-tag { font-size: 0.8rem; color: #444; margin-bottom: 2.5rem; letter-spacing: 1px; }
-.footer-bottom { font-size: 0.72rem; color: #333; }
-
-/* WHATSAPP */
-.wa-float { position: fixed; bottom: 2rem; left: 2rem; z-index: 50; background: #25D366; color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.3); transition: transform 0.2s; -webkit-tap-highlight-color: transparent; }
+/* ── WHATSAPP FLOAT ───────────────────────── */
+.wa-float {
+  position: fixed; bottom: 1.5rem; left: 1.5rem;
+  width: 50px; height: 50px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; text-decoration: none; z-index: 99;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  transition: transform 0.2s;
+}
 .wa-float:hover { transform: scale(1.08); }
 
-
-/* ══════════════════════════════════════════════════════
-   MOBILE — max-width: 900px
-   ══════════════════════════════════════════════════════ */
+/* ── MOBILE ─────────────────────────────────
+   max-width: 900px
+   ─────────────────────────────────────────── */
 @media (max-width: 900px) {
   nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
 
-  /* ══════════════════════════════════════════════════════
-     HERO — MOBILE
-
-     Switch from grid to flex-column. direction:rtl restored.
-
-     The key fix for the "cut-off head" bug:
-       hero-image-panel gets top: 11rem instead of top: 0.
-       This means the photo starts BELOW the black title bar,
-       so faces appear at the very top of the image area —
-       not hidden behind the solid-black header.
-
-     hero-content gets padding-top: 30vw which pushes the
-     bio text down into the mid-body zone of the photo so
-     it sits below the faces without covering them.
-
-     min-height: max(680px, 155vw) gives enough room for the
-     full body (and the friend) to be visible = "zoomed out."
-     ══════════════════════════════════════════════════════ */
   .hero {
     direction: rtl;
     display: flex;
@@ -250,14 +244,13 @@ footer { background: #080808; padding: 4rem; text-align: center; border-top: 1px
     position: relative;
     min-height: max(680px, 155vw);
     padding-top: 68px;
-    background: var(--black);
-    grid-template-columns: unset; /* clear desktop grid */
+    background: var(--cream);
+    grid-template-columns: unset;
   }
 
-  /* Photo starts below the black header — faces NOT hidden */
   .hero-image-panel {
     position: absolute;
-    top: 11rem;            /* estimated height of hero-header on mobile */
+    top: 11rem;
     right: 0; left: 0; bottom: 0;
     z-index: 0;
     overflow: hidden;
@@ -266,23 +259,21 @@ footer { background: #080808; padding: 4rem; text-align: center; border-top: 1px
   .hero-image-panel img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 10%; /* show from near-top of the photo */
+    object-position: center 10%;
     display: block;
+    filter: none;
   }
-  /* Gradient overlay on mobile: top = transparent, bottom = darker for text readability */
   .hero-image-panel::after {
     display: block;
     background: linear-gradient(
       to bottom,
-     rgba(12,12,12,0.05) 0%,    /* near-transparent at top */
-    rgba(12,12,12,0.3) 35%,   /* still clear — faces zone */
-    rgba(12,12,12,0.6) 65%,   /* starts darkening */
-    rgba(12,12,12,0.99) 100%   /* very dark at the bottom */
-  );
-}
- 
+      rgba(250,248,244,0.0) 0%,
+      rgba(250,248,244,0.2) 35%,
+      rgba(250,248,244,0.65) 65%,
+      rgba(250,248,244,0.97) 100%
+    );
+  }
 
-  /* Text wrapper: full column, flex column, transparent */
   .hero-text {
     direction: rtl;
     display: flex;
@@ -292,86 +283,38 @@ footer { background: #080808; padding: 4rem; text-align: center; border-top: 1px
     flex: 1;
   }
 
-  /* Zone 1 — solid black: tag + title on pure black */
   .hero-header {
     position: relative;
     z-index: 2;
-    background: var(--black);
+    background: var(--cream);
     padding: 2rem 1.5rem 1.5rem;
     max-width: 100%;
   }
 
-  .hero-title { font-size: clamp(2.5rem, 9vw, 3.5rem); margin-bottom: 1rem; }
+  .hero-title { font-size: clamp(2.5rem, 9vw, 3.5rem); margin-bottom: 1rem; color: var(--black); }
   .hero-tag { margin-bottom: 1.2rem; }
 
-  /* Zone 2 — transparent: bio text floats over the mid-body of the photo */
   .hero-content {
     position: relative;
     z-index: 1;
     background: transparent;
-    /* padding-top creates visible image space before bio text begins,
-       keeping text below the faces */
     padding: 50vw 1.5rem 2.5rem;
     max-width: 100%;
   }
 
-.hero-sub { font-size: 0.95rem; max-width: 100%; }
-
+  .hero-sub { font-size: 0.95rem; max-width: 100%; color: var(--text); }
   .hero-btns { flex-direction: column; gap: 0.8rem; }
   .btn-gold, .btn-outline { width: 100%; text-align: center; padding: 1rem 1.5rem; font-size: 1rem; }
 
-  /* BENEFITS — show yoni-last.jpeg background on mobile */
-  .benefits-bg-wrap {
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  /* METHOD — hide image column on mobile */
+  .benefits-bg-wrap { display: block; position: absolute; inset: 0; z-index: 0; }
   .method-image { display: none; }
 
-  /* ══════════════════════════════════════════════════════
-     בוא נהיה כנים — MOBILE FIX
-
-     Stacked boxes (1 column). Visual treatment matches the
-     desktop design: clear borders, box backgrounds, visible
-     heading colours, and properly spaced list items.
-     ══════════════════════════════════════════════════════ */
   .whom-section { padding: 4rem 1.2rem; }
-  .whom-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .whom-box {
-    padding: 2rem 1.5rem;
-    border-radius: 2px;
-  }
-  .whom-box.yes {
-    border-color: rgba(201,168,76,0.45);
-    background: rgba(201,168,76,0.05);
-  }
-  .whom-box.no {
-    border-color: rgba(255,255,255,0.14);
-    background: rgba(255,255,255,0.03);
-  }
-  .whom-box-title {
-    font-size: 1.5rem;
-    letter-spacing: 3px;
-    margin-bottom: 1.4rem;
-  }
-  .whom-box.no .whom-box-title { color: #555; }
-  .whom-list li {
-    font-size: 0.95rem;
-    color: #bbb;
-    padding: 0.75rem 0;
-    gap: 0.9rem;
-  }
-  .whom-box.yes li::before { color: var(--gold); font-size: 0.9rem; }
-  .whom-box.no li::before { color: #555; font-size: 0.9rem; }
+  .whom-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .whom-box { padding: 2rem 1.5rem; }
+  .whom-box-title { font-size: 1.5rem; letter-spacing: 3px; margin-bottom: 1.4rem; }
+  .whom-list li { font-size: 0.95rem; padding: 0.75rem 0; }
 
-  /* Remaining layout resets */
   .about-grid, .method-grid { grid-template-columns: 1fr; }
   .section, .cta-section { padding: 4rem 1.2rem; }
   .section-title { font-size: clamp(2rem, 7vw, 3rem); }
@@ -397,7 +340,7 @@ footer { background: #080808; padding: 4rem; text-align: center; border-top: 1px
 @media (max-width: 768px) {
   #who { padding: 4rem 1.2rem !important; }
   .who-grid { grid-template-columns: 1fr !important; }
-  .who-card { border-left: none !important; border-bottom: 1px solid rgba(201,168,76,0.15) !important; }
+  .who-card { border-left: none !important; border-bottom: 1px solid rgba(184,137,42,0.15) !important; }
   .who-card:last-child { border-bottom: none !important; }
 }
 
@@ -411,6 +354,5 @@ footer { background: #080808; padding: 4rem; text-align: center; border-top: 1px
 @media (hover: none) {
   .btn-gold:active { background: var(--gold-light); transform: scale(0.96); transition: transform 0.1s, background 0.1s; }
   .btn-outline:active { border-color: var(--gold); color: var(--gold); transform: scale(0.96); transition: transform 0.1s; }
-  .who-card:active { background: rgba(201,168,76,0.08); }
   .wa-float:active { transform: scale(0.93); }
 }
