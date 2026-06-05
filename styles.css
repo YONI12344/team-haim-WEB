@@ -475,98 +475,151 @@ footer { padding: 4rem; text-align: center; background: var(--black); border-top
 
 /* ── MOBILE ─────────────────────────────────── */
 @media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
+  nav {
+    padding: 1rem 1.5rem;
+    background: rgba(17,17,16,0.97);
+    border-bottom-color: rgba(184,137,42,0.15);
+  }
+  .nav-logo { color: #f5f1ea; }
+  .hamburger span { background: #f5f1ea; }
+  .mobile-menu { background: var(--black); }
+  .mobile-menu a { color: #f5f1ea; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
 
+  /* ── HERO: full-width photo, solid text block on top ── */
   .hero {
-    direction: rtl;
     display: flex;
     flex-direction: column;
-    position: relative;
-    min-height: max(680px, 155vw);
-    padding-top: 68px;
-    background: var(--cream);
-    grid-template-columns: unset;
-  }
-  .hero-image-panel {
-    position: absolute;
-    top: 11rem;
-    right: 0; left: 0; bottom: 0;
-    z-index: 0;
-    overflow: hidden;
     direction: rtl;
+    padding-top: 60px;
+    background: var(--black);
+    grid-template-columns: unset;
+    min-height: unset;
+  }
+
+  /* Photo fills viewport width at a nice height */
+  .hero-image-panel {
+    position: relative;
+    width: 100%;
+    height: 72vw;
+    max-height: 380px;
+    overflow: hidden;
+    order: 1;
   }
   .hero-image-panel img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 10%;
+    object-position: center 15%;
     display: block;
+    transform: none;
   }
+  /* Subtle bottom fade so text area below feels connected */
   .hero-image-panel::after {
     display: block;
-    background: linear-gradient(
-      to bottom,
-      rgba(250,248,244,0.0) 0%,
-      rgba(250,248,244,0.2) 35%,
-      rgba(250,248,244,0.65) 65%,
-      rgba(250,248,244,0.97) 100%
-    );
+    background: linear-gradient(to bottom, transparent 55%, var(--black) 100%);
   }
+
+  /* Text block sits BELOW the photo — fully readable on dark bg */
   .hero-text {
+    order: 2;
     direction: rtl;
     display: flex;
     flex-direction: column;
     padding: 0;
-    background: transparent;
-    flex: 1;
+    background: var(--black);
   }
   .hero-header {
-    position: relative;
-    z-index: 2;
-    background: var(--cream);
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 1.6rem 1.5rem 0;
+    background: var(--black);
+    position: static;
+    z-index: auto;
   }
-  .hero-title { font-size: clamp(2.5rem, 9vw, 3.5rem); margin-bottom: 1rem; }
-  .hero-tag { margin-bottom: 1.2rem; }
+  .hero-tag {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .hero-title {
+    font-size: clamp(2.8rem, 10vw, 4rem);
+    margin-bottom: 0;
+    color: #f5f1ea;
+  }
+  .hero-title em { color: var(--gold); }
+
   .hero-content {
-    position: relative;
-    z-index: 1;
-    background: transparent;
-    padding: 50vw 1.5rem 2.5rem;
+    padding: 1.4rem 1.5rem 2.5rem;
+    background: var(--black);
+    position: static;
+    z-index: auto;
   }
-  .hero-sub { font-size: 0.95rem; }
-  .hero-creds { margin-bottom: 1.5rem; }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: #bbb;
+    margin-bottom: 1.4rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .hero-creds {
+    background: rgba(184,137,42,0.08);
+    border-right: 3px solid var(--gold);
+    margin-bottom: 1.6rem;
+    padding: 1rem 1.2rem;
+  }
+  .hero-cred-item { color: #ccc; font-size: 0.85rem; }
   .hero-btns { flex-direction: column; gap: 0.8rem; }
   .btn-gold, .btn-outline { width: 100%; text-align: center; padding: 1rem 1.5rem; font-size: 1rem; }
+  .btn-outline { color: #f5f1ea; border-color: rgba(184,137,42,0.5); }
 
+  /* ── SECTIONS ── */
   .about-grid, .method-grid { grid-template-columns: 1fr; }
-  .section, .cta-section { padding: 4rem 1.2rem; }
-  .contact-section { padding: 4rem 1.2rem !important; }
+  .section { padding: 3.5rem 1.4rem; background: var(--cream); }
+  .cta-section { padding: 4rem 1.4rem; }
+  .contact-section { padding: 4rem 1.4rem !important; }
   .section-title { font-size: clamp(2rem, 7vw, 3rem); }
-  .about-grid { gap: 2.5rem; }
-  .about-text p { font-size: 0.9rem; }
-  .about-image-stack img { max-height: 60vw; }
+  .about-grid { gap: 2rem; }
+  .about-text p { font-size: 0.92rem; }
+  .about-image-stack img { max-height: 58vw; }
   .about-badges { gap: 0.4rem; }
-  .about-badge { font-size: 0.72rem; }
+  .about-badge { font-size: 0.73rem; }
 
   .benefits-bg-wrap { display: block; position: absolute; inset: 0; z-index: 0; }
-  .dark-section { padding: 4rem 1.2rem; }
+  .dark-section { padding: 3.5rem 1.4rem; }
   .benefits-grid { grid-template-columns: 1fr; }
-  .benefit-item { padding: 1.4rem 1.2rem; }
-  .benefit-title { font-size: 1rem; }
-  .benefit-desc { font-size: 0.88rem; line-height: 1.65; }
-  .price-banner { flex-wrap: wrap; gap: 0.8rem; padding: 1.2rem; }
-  .price-banner .btn-gold { width: 100%; text-align: center; }
+  .benefit-item { padding: 1.3rem 1.2rem; }
+  .benefit-title { font-size: 0.95rem; }
+  .benefit-desc { font-size: 0.87rem; line-height: 1.65; }
 
-  .app-section { padding: 4rem 1.2rem; }
-  .app-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .app-mockup { display: none; }
+  /* ── APP SECTION ── full width, phone mockup centered below features ── */
+  .app-section { padding: 3.5rem 1.4rem; }
+  .app-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .app-desc { font-size: 0.92rem; margin-bottom: 2rem; }
+  .app-features { gap: 1.2rem; margin-bottom: 2.5rem; }
+  .app-feature { padding-bottom: 1.2rem; }
+  .app-feature-title { font-size: 0.92rem; }
+  .app-feature-desc { font-size: 0.83rem; }
 
+  /* Show phone mockup on mobile, centred, scaled to fit */
+  .app-mockup {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 0.5rem;
+  }
+  .app-phone-wrap {
+    transform: scale(0.88);
+    transform-origin: top center;
+  }
+
+  /* ── METHOD ── */
   .method-grid { gap: 2rem; }
   .method-image { display: none; }
   .step { gap: 1rem; }
 
+  /* ── CTA ── */
   .cta-title { font-size: clamp(2rem, 8vw, 3.5rem); }
   .cta-inner { max-width: 100%; }
   .cta-includes { gap: 0.4rem; }
@@ -574,25 +627,19 @@ footer { padding: 4rem; text-align: center; background: var(--black); border-top
   .cta-price-row { gap: 1rem; }
   .cta-price-row .btn-gold { width: 100%; text-align: center; }
 
+  /* ── CONTACT ── */
   .contact-options { flex-direction: column; gap: 1rem; }
   .contact-card { width: 100%; min-width: unset; }
 
-  footer { padding: 3rem 1.2rem; }
+  footer { padding: 3rem 1.4rem; }
   .footer-logo { font-size: 1.6rem; }
-  .wa-float { bottom: 1.2rem; left: 1.2rem; width: 46px; height: 46px; font-size: 1.2rem; }
+  .wa-float { bottom: 1.2rem; left: 1.2rem; width: 48px; height: 48px; font-size: 1.3rem; }
 }
 
-@media (max-width: 768px) {
-  #who { padding: 4rem 1.2rem !important; }
-  .who-grid { grid-template-columns: 1fr !important; }
-  .who-card { border-left: none !important; border-bottom: 1px solid rgba(184,137,42,0.15) !important; }
-  .who-card:last-child { border-bottom: none !important; }
-}
-
-@media (max-width: 390px) {
-  .hero-title { font-size: 2.4rem; }
-  .hero-tag { font-size: 0.65rem; }
-  .section, .dark-section, .cta-section { padding: 3rem 1rem; }
+@media (max-width: 420px) {
+  .hero-title { font-size: 2.7rem; }
+  .app-phone-wrap { transform: scale(0.78); transform-origin: top center; }
+  .section, .dark-section, .cta-section { padding: 3rem 1.1rem; }
   .section-label { font-size: 0.62rem; letter-spacing: 3px; }
 }
 
