@@ -431,145 +431,272 @@ body {
   border-top: 1px solid rgba(201,168,76,0.1);
   border-bottom: 1px solid rgba(201,168,76,0.1);
 }
-.app-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-}
-.app-section .section-title { color: var(--white); }
 
-.app-desc {
+.app-header { text-align: center; margin-bottom: 4rem; }
+.app-section .section-title { color: var(--white); }
+.app-intro-desc {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.85;
-  margin-bottom: 2.5rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
   font-weight: 300;
 }
-.app-features { display: flex; flex-direction: column; gap: 1.2rem; }
-.app-feat {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  padding-bottom: 1.2rem;
-  border-bottom: 1px solid rgba(201,168,76,0.09);
-}
-.app-feat:last-child { border-bottom: none; padding-bottom: 0; }
-.app-dot {
-  width: 7px; height: 7px;
-  background: var(--gold);
-  border-radius: var(--r-full);
-  margin-top: 7px; flex-shrink: 0;
-}
-.app-feat-title {
-  font-size: 0.88rem; font-weight: 700;
-  color: var(--white); margin-bottom: 0.2rem;
-}
-.app-feat-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
-/* Phone mockup */
-.phone-col { display: flex; justify-content: center; align-items: center; }
-.phone-wrap { position: relative; }
-.phone-frame {
-  width: 260px;
-  background: #07111f;
-  border-radius: 38px;
-  border: 2px solid rgba(201,168,76,0.2);
+/* Two phones layout */
+.two-phones {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-bottom: 4.5rem;
+}
+.phone-mockup-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.phone-label {
+  font-size: 0.65rem;
+  color: rgba(201,168,76,0.55);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+/* Phone frame */
+.phone-frame-v2 {
+  width: 240px;
+  background: #0d0d1a;
+  border-radius: 42px;
+  border: 2px solid rgba(255,255,255,0.09);
   padding: 14px;
   position: relative; z-index: 1;
   box-shadow:
-    0 0 0 1px rgba(201,168,76,0.08),
-    0 40px 80px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.04);
+    0 0 0 1px rgba(201,168,76,0.06),
+    0 40px 80px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.03);
 }
 .phone-notch {
-  width: 80px; height: 20px;
-  background: #07111f;
-  border-radius: 0 0 14px 14px;
-  margin: 0 auto 10px;
-  border: 2px solid rgba(255,255,255,0.05);
+  width: 72px; height: 18px;
+  background: #0d0d1a;
+  border-radius: 0 0 12px 12px;
+  margin: 0 auto 8px;
+  border: 2px solid rgba(255,255,255,0.04);
   border-top: none;
 }
-.phone-screen {
-  background: #0a1628;
-  border-radius: 26px;
-  padding: 1rem;
-  min-height: 460px;
+.phone-screen-white {
+  background: #f8f9fb;
+  border-radius: 30px;
   overflow: hidden;
   direction: rtl;
-}
-.ps-header {
-  display: flex; align-items: center; gap: 0.5rem;
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(201,168,76,0.1);
-}
-.ps-chip {
-  width: 28px; height: 28px;
-  background: var(--gold);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.7rem; color: var(--navy); letter-spacing: 1px; flex-shrink: 0;
-}
-.ps-title { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; color: var(--white); letter-spacing: 2px; flex: 1; }
-.ps-date { font-size: 0.58rem; color: rgba(255,255,255,0.3); }
-
-.ps-card {
-  background: rgba(255,255,255,0.04);
-  border-radius: 14px;
-  padding: 0.8rem 0.9rem;
-  border: 1px solid rgba(201,168,76,0.14);
-  margin-bottom: 0.7rem;
-}
-.ps-label {
-  font-size: 0.55rem; letter-spacing: 2.5px;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 0.45rem;
-}
-.ps-workout-name { font-size: 0.72rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
-.ps-workout-detail { font-size: 0.6rem; color: rgba(255,255,255,0.45); line-height: 1.5; margin-bottom: 0.5rem; }
-.ps-pills { display: flex; gap: 0.3rem; }
-.ps-pill {
-  font-size: 0.55rem; padding: 0.18rem 0.55rem;
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold); border-radius: var(--r-full);
-}
-.ps-stats {
+  min-height: 460px;
   display: flex;
-  border-radius: 10px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.05);
-  margin-top: 0.45rem;
+  flex-direction: column;
 }
-.ps-stat { flex: 1; padding: 0.6rem 0.4rem; text-align: center; border-left: 1px solid rgba(255,255,255,0.05); }
-.ps-stat:last-child { border-left: none; }
-.ps-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 1px; }
-.ps-stat-lbl { font-size: 0.5rem; color: rgba(255,255,255,0.3); margin-top: 2px; }
-.ps-msg { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.45rem; }
-.ps-avatar {
-  width: 24px; height: 24px;
-  background: var(--gold); border-radius: var(--r-full);
+
+/* ── Topbar (Home) ────────────────────────── */
+.pws-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.8rem 0.7rem 0.5rem;
+}
+.pws-avatar-circle {
+  width: 26px; height: 26px;
+  background: var(--gold);
+  border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.48rem; font-weight: 700; color: var(--navy); flex-shrink: 0;
+  font-size: 0.48rem; font-weight: 700; color: var(--navy);
+  flex-shrink: 0;
 }
-.ps-bubble {
+.pws-greeting { flex: 1; overflow: hidden; }
+.pws-date-small { font-size: 0.5rem; color: #718096; }
+.pws-hello { font-size: 0.62rem; font-weight: 700; color: #0a1628; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pws-th-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem; color: var(--gold); letter-spacing: 1px; flex-shrink: 0;
+}
+
+/* ── Navy Workout Card ────────────────────── */
+.pws-workout-card {
+  background: #0a1628;
+  border-radius: 14px;
+  padding: 0.7rem 0.75rem;
+}
+.pws-workout-card-margin { margin: 0 0.6rem; }
+.pws-type-badge {
+  display: inline-flex;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.48rem; font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--r-full);
+  margin-bottom: 0.35rem;
+}
+.pws-wname {
+  font-size: 0.7rem; font-weight: 700;
+  color: #ffffff; line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+.pws-wmeta { font-size: 0.52rem; color: rgba(255,255,255,0.42); margin-bottom: 0.5rem; }
+.pws-open-btn {
+  display: block; width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.55rem; font-weight: 600;
+  padding: 0.38rem; text-align: center;
+}
+
+/* ── Week stats (Home) ────────────────────── */
+.pws-week-section { padding: 0.6rem 0.7rem; }
+.pws-week-title { font-size: 0.58rem; font-weight: 700; color: #0a1628; margin-bottom: 0.12rem; }
+.pws-week-sub { font-size: 0.48rem; color: #718096; margin-bottom: 0.45rem; }
+.pws-stats-row {
+  display: flex;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px; overflow: hidden;
+}
+.pws-stat {
+  flex: 1; padding: 0.4rem 0.2rem;
+  text-align: center;
+  border-left: 1px solid #e2e8f0;
+}
+.pws-stat:last-child { border-left: none; }
+.pws-stat-n { font-size: 0.82rem; font-weight: 700; color: #0a1628; line-height: 1; }
+.pws-stat-l { font-size: 0.42rem; color: #718096; margin-top: 2px; }
+
+/* ── Coach note (Home) ────────────────────── */
+.pws-coach-note {
+  margin: 0.4rem 0.6rem 0.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+  border-left: 3px solid var(--gold);
+  padding: 0.5rem 0.55rem;
+  box-shadow: 0 1px 4px rgba(10,22,40,0.06);
+  flex: 1;
+}
+.pws-note-lbl { font-size: 0.46rem; font-weight: 700; color: #0a1628; margin-bottom: 0.18rem; }
+.pws-note-text { font-size: 0.49rem; color: #4a5568; line-height: 1.6; font-style: italic; }
+
+/* ── Bottom nav ───────────────────────────── */
+.pws-bottomnav {
+  display: flex;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.45rem 0 0.3rem;
+  margin-top: auto;
+}
+.pws-nav-item {
+  flex: 1; text-align: center;
+  font-size: 0.42rem; color: #a0aec0;
+}
+.pws-nav-item.active { color: #0a1628; font-weight: 700; }
+
+/* ── Planner header ───────────────────────── */
+.pws-plan-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 0.7rem 0.35rem;
+}
+.pws-plan-date { font-size: 0.55rem; font-weight: 600; color: #0a1628; }
+.pws-arr { font-size: 0.65rem; color: #a0aec0; line-height: 1; }
+
+/* ── Filter pills (Planner) ───────────────── */
+.pws-filters {
+  display: flex; gap: 0.3rem;
+  padding: 0 0.6rem 0.45rem;
+  align-items: center;
+}
+.pws-filter {
+  font-size: 0.46rem; padding: 0.18rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--r-full);
+  color: #4a5568; background: transparent;
+}
+.pws-filter-strava {
+  font-size: 0.46rem; padding: 0.18rem 0.5rem;
+  border: 1px solid rgba(45,165,98,0.3);
+  border-radius: var(--r-full);
+  color: #2da562; background: rgba(45,165,98,0.08);
+}
+.pws-filter.active {
+  background: var(--gold); border-color: var(--gold);
+  color: var(--navy); font-weight: 700;
+}
+.pws-today-lbl {
+  font-size: 0.48rem; color: #718096;
+  padding: 0 0.7rem 0.25rem;
+}
+
+/* ── Planner gray pills + detail btn ─────── */
+.pws-gray-pills { display: flex; gap: 0.3rem; margin: 0.4rem 0 0.45rem; }
+.pws-gray-pill {
+  font-size: 0.48rem; padding: 0.16rem 0.45rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-full); color: rgba(255,255,255,0.55);
+}
+.pws-details-btn {
+  display: block; width: 100%;
   background: rgba(255,255,255,0.05);
-  border-radius: 4px 10px 10px 10px;
-  padding: 0.45rem 0.65rem;
-  font-size: 0.58rem; color: rgba(255,255,255,0.65);
-  line-height: 1.55; flex: 1;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.52rem; padding: 0.35rem;
+  text-align: center;
 }
-.ps-sync { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.6rem; }
-.ps-sync-pill {
-  font-size: 0.52rem; padding: 0.18rem 0.55rem;
-  background: rgba(74,210,149,0.1); color: #4cd98a;
-  border-radius: var(--r-full); border: 1px solid rgba(74,210,149,0.2);
+
+/* ── Season phase ─────────────────────────── */
+.pws-season-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.5rem 0.7rem;
+  border-top: 1px solid #e2e8f0; margin-top: 0.4rem;
 }
-.phone-glow {
-  position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
-  width: 180px; height: 60px;
-  background: radial-gradient(ellipse, rgba(201,168,76,0.28) 0%, transparent 70%);
-  filter: blur(18px); pointer-events: none;
+.pws-season-lbl { font-size: 0.5rem; color: #718096; }
+.pws-season-val { display: flex; align-items: center; gap: 0.35rem; }
+.pws-green-pill {
+  font-size: 0.46rem; padding: 0.16rem 0.5rem;
+  background: rgba(34,197,94,0.1); color: #16a34a;
+  border-radius: var(--r-full); border: 1px solid rgba(34,197,94,0.2); font-weight: 600;
 }
+.pws-season-week { font-size: 0.48rem; color: #4a5568; }
+
+/* ── KM this week ─────────────────────────── */
+.pws-km-section {
+  padding: 0.5rem 0.7rem 0.6rem;
+  border-top: 1px solid #e2e8f0;
+}
+.pws-km-lbl { font-size: 0.5rem; color: #718096; margin-bottom: 0.2rem; }
+.pws-km-num { font-size: 1.15rem; font-weight: 700; color: #0a1628; line-height: 1; margin-bottom: 0.3rem; }
+.pws-progress-bar {
+  height: 4px; background: #e2e8f0;
+  border-radius: 2px; overflow: hidden; margin-bottom: 0.22rem;
+}
+.pws-progress-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+.pws-km-range { font-size: 0.46rem; color: #a0aec0; direction: ltr; text-align: left; }
+
+/* ── 5-feature grid ───────────────────────── */
+.app-features-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.app-feat-v2 {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: var(--r-2xl);
+  padding: 1.4rem 1.1rem;
+  transition: background 0.22s, border-color 0.22s;
+}
+.app-feat-v2:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(201,168,76,0.28);
+}
+.af-icon { font-size: 1.35rem; margin-bottom: 0.65rem; }
+.af-title { font-size: 0.82rem; font-weight: 700; color: #ffffff; margin-bottom: 0.3rem; line-height: 1.35; }
+.af-desc { font-size: 0.74rem; color: rgba(255,255,255,0.42); line-height: 1.65; }
 
 /* ── BENEFITS ────────────────────────────────── */
 .benefits-grid {
@@ -814,9 +941,11 @@ body {
 
   /* App section */
   .app-section { padding: 4.5rem 0; }
-  .app-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .phone-col { order: -1; }
-  .phone-frame { transform: scale(0.88); transform-origin: top center; }
+  .app-header { margin-bottom: 2.5rem; }
+  .two-phones { gap: 1.2rem; margin-bottom: 3rem; }
+  .phone-frame-v2 { width: 172px; padding: 11px; border-radius: 36px; }
+  .phone-screen-white { min-height: 380px; border-radius: 26px; }
+  .app-features-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
 
   /* Benefits */
   .benefits-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -853,7 +982,12 @@ body {
   .hero-title { font-size: clamp(2.8rem, 10vw, 3.5rem); }
   .hero-badges { gap: 0.4rem; }
   .hero-badge { font-size: 0.65rem; padding: 0.28rem 0.75rem; }
-  .phone-frame { transform: scale(0.8); transform-origin: top center; }
+  /* App section — one centered phone on small screens */
+  .phone-second { display: none; }
+  .two-phones { justify-content: center; margin-bottom: 2.5rem; }
+  .phone-frame-v2 { width: 220px; padding: 13px; border-radius: 40px; }
+  .phone-screen-white { min-height: 440px; border-radius: 28px; }
+  .app-features-grid { grid-template-columns: 1fr; }
 }
 
 /* Touch device interaction states */
