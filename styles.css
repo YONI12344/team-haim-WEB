@@ -271,7 +271,7 @@ body {
   padding-top: 72px;
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #112241 100%);
   display: grid;
-  grid-template-columns: 52% 48%;
+  grid-template-columns: 60% 40%;
   direction: ltr;
   position: relative;
   overflow: hidden;
@@ -284,14 +284,14 @@ body {
 .hero-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 10%;
+  object-position: center 15%;
   display: block;
 }
 .hero-photo-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to right, rgba(10,22,40,0) 25%, rgba(10,22,40,0.7) 65%, rgba(10,22,40,1) 100%),
-    linear-gradient(to top, rgba(10,22,40,0.65) 0%, transparent 45%);
+    linear-gradient(to right, rgba(10,22,40,0) 40%, rgba(10,22,40,0.35) 70%, rgba(10,22,40,0.82) 100%),
+    linear-gradient(to top, rgba(10,22,40,0.35) 0%, transparent 40%);
 }
 
 .hero-body {
