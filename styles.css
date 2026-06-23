@@ -271,7 +271,7 @@ body {
   padding-top: 72px;
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #112241 100%);
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 67% 33%;
   direction: ltr;
   position: relative;
   overflow: hidden;
@@ -290,8 +290,8 @@ body {
 .hero-photo-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to right, rgba(10,22,40,0) 40%, rgba(10,22,40,0.35) 70%, rgba(10,22,40,0.82) 100%),
-    linear-gradient(to top, rgba(10,22,40,0.35) 0%, transparent 40%);
+    linear-gradient(to right, rgba(10,22,40,0) 55%, rgba(10,22,40,0.08) 76%, rgba(10,22,40,0.65) 100%),
+    linear-gradient(to top, rgba(10,22,40,0.08) 0%, transparent 18%);
 }
 
 .hero-body {
@@ -347,6 +347,91 @@ body {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+/* ── HERO PHONE PREVIEW ──────────────────────── */
+.hero-phone {
+  width: 168px;
+  background: #f8f9fb;
+  border-radius: 20px;
+  padding: 0.6rem 0.6rem 0.5rem;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1.5px rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.08);
+  direction: rtl;
+  flex-shrink: 0;
+}
+.hp-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 0.35rem;
+}
+.hp-date { font-size: 0.44rem; color: #718096; }
+.hp-logo { font-family: 'Bebas Neue', sans-serif; font-size: 0.88rem; color: var(--gold); letter-spacing: 1px; }
+.hp-card {
+  background: #0a1628; border-radius: 12px;
+  padding: 0.55rem 0.6rem; margin-bottom: 0.42rem;
+}
+.hp-badge {
+  display: inline-block;
+  background: var(--gold); color: var(--navy);
+  font-size: 0.4rem; font-weight: 700;
+  padding: 0.1rem 0.4rem; border-radius: var(--r-full);
+  margin-bottom: 0.2rem;
+}
+.hp-name { font-size: 0.58rem; font-weight: 700; color: #fff; margin-bottom: 0.12rem; line-height: 1.3; }
+.hp-meta { font-size: 0.44rem; color: rgba(255,255,255,0.38); margin-bottom: 0.38rem; }
+.hp-btn {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  font-size: 0.44rem; color: rgba(255,255,255,0.55);
+  padding: 0.26rem; text-align: center;
+}
+.hp-stats {
+  display: flex;
+  border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+.hp-stat {
+  flex: 1; text-align: center;
+  padding: 0.32rem 0.15rem;
+  border-left: 1px solid #e2e8f0;
+  display: flex; flex-direction: column; gap: 1px;
+}
+.hp-stat:last-child { border-left: none; }
+.hp-num { font-size: 0.62rem; font-weight: 700; color: #0a1628; }
+.hp-lbl { font-size: 0.36rem; color: #718096; }
+.hp-note {
+  background: #fff; border-radius: 8px;
+  border-left: 2.5px solid var(--gold);
+  padding: 0.32rem 0.4rem;
+  font-size: 0.41rem; color: #4a5568;
+  font-style: italic; line-height: 1.55;
+}
+
+/* ── STATS STRIP ─────────────────────────────── */
+.stats-strip {
+  background: var(--navy-mid);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  padding: 2.2rem 0;
+}
+.stats-strip-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+  display: flex; align-items: center;
+}
+.strip-stat {
+  flex: 1; text-align: center;
+}
+.strip-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem; color: var(--gold); letter-spacing: 2px; line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.strip-lbl { font-size: 0.68rem; color: rgba(255,255,255,0.38); letter-spacing: 1.5px; text-transform: uppercase; }
+.strip-sep {
+  width: 1px; height: 2.5rem;
+  background: rgba(201,168,76,0.15);
+  flex-shrink: 0;
 }
 
 /* ── ABOUT ───────────────────────────────────── */
@@ -931,6 +1016,12 @@ body {
     justify-content: center; padding: 1rem 1.5rem; font-size: 1rem;
   }
 
+  /* Hero phone + stats strip */
+  .hero-phone { display: none; }
+  .stats-strip-inner { padding: 0 1.4rem; }
+  .strip-num { font-size: 2.1rem; }
+  .strip-lbl { font-size: 0.58rem; }
+
   /* About */
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-photo-col { order: -1; }
@@ -982,6 +1073,12 @@ body {
   .hero-title { font-size: clamp(2.8rem, 10vw, 3.5rem); }
   .hero-badges { gap: 0.4rem; }
   .hero-badge { font-size: 0.65rem; padding: 0.28rem 0.75rem; }
+  /* Stats strip — 2×2 grid */
+  .stats-strip { padding: 1.6rem 0; }
+  .stats-strip-inner { flex-wrap: wrap; row-gap: 1.1rem; padding: 0 1.4rem; }
+  .strip-stat { flex: 0 0 50%; }
+  .strip-sep { display: none; }
+
   /* App section — one centered phone on small screens */
   .phone-second { display: none; }
   .two-phones { justify-content: center; margin-bottom: 2.5rem; }
