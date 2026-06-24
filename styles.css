@@ -286,12 +286,13 @@ body {
   object-fit: cover;
   object-position: center 15%;
   display: block;
+  filter: brightness(1.1) contrast(1.03);
 }
 .hero-photo-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to right, rgba(10,22,40,0) 55%, rgba(10,22,40,0.08) 76%, rgba(10,22,40,0.65) 100%),
-    linear-gradient(to top, rgba(10,22,40,0.08) 0%, transparent 18%);
+    linear-gradient(to right, rgba(10,22,40,0) 62%, rgba(10,22,40,0.04) 80%, rgba(10,22,40,0.42) 100%),
+    linear-gradient(to top, rgba(10,22,40,0.04) 0%, transparent 12%);
 }
 
 .hero-body {
@@ -998,9 +999,9 @@ body {
   .hero-photo-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(10,22,40,0) 35%,
-      rgba(10,22,40,0.85) 80%,
-      rgba(10,22,40,1) 100%
+      rgba(10,22,40,0) 42%,
+      rgba(10,22,40,0.62) 82%,
+      rgba(10,22,40,0.92) 100%
     );
   }
   .hero-body {
@@ -1021,6 +1022,13 @@ body {
   .stats-strip-inner { padding: 0 1.4rem; }
   .strip-num { font-size: 2.1rem; }
   .strip-lbl { font-size: 0.58rem; }
+
+  /* Font sizes — enforce 16px minimum on mobile */
+  .body-text { font-size: 1rem; }
+  .section-sub { font-size: 1rem; }
+  .benefit-desc { font-size: 0.9rem; line-height: 1.75; }
+  .step-desc { font-size: 0.9rem; }
+  .af-desc { font-size: 0.85rem; }
 
   /* About */
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
