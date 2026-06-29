@@ -962,14 +962,13 @@ body {
   position: fixed; bottom: 1.5rem; left: 1.5rem;
   width: 54px; height: 54px;
   border-radius: var(--r-full);
-  background: var(--gold);
+  background: #25D366;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
   text-decoration: none; z-index: 99;
-  box-shadow: 0 4px 20px rgba(201,168,76,0.45);
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.wa-fab:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.55); }
+.wa-fab:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.55); }
 
 /* ══════════════════════════════════════════════
    MOBILE  ·  max-width: 900px
@@ -1073,7 +1072,8 @@ body {
   .footer { padding: 3rem 1.4rem; }
 
   /* WA fab */
-  .wa-fab { width: 50px; height: 50px; font-size: 1.3rem; bottom: 1.2rem; left: 1.2rem; }
+  .wa-fab { width: 50px; height: 50px; bottom: 1.2rem; left: 1.2rem; }
+  .wa-fab svg { width: 26px; height: 26px; }
 }
 
 @media (max-width: 540px) {
