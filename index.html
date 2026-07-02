@@ -308,11 +308,17 @@ html[lang="he"] .wsr-desc { font-family:var(--fsr); font-size:.97rem; }
 @media(min-width:768px){ .app-h2{ font-size:2.75rem; } }
 .app-grid { display:grid; grid-template-columns:1fr; gap:2.5rem; }
 @media(min-width:768px){ .app-grid{ grid-template-columns:repeat(3,1fr); gap:3rem; } }
-.app-item { padding-top:1.5rem; border-top:1px solid var(--line); }
+.app-item { border-top:1px solid var(--line); }
+.app-img { overflow:hidden; aspect-ratio:4/3; background:rgba(211,202,186,.35); margin-top:1.25rem; margin-bottom:1.5rem; }
+.app-img img { width:100%; height:100%; object-fit:cover; object-position:center 20%; transition:transform 5.5s ease; }
+.app-item:hover .app-img img { transform:scale(1.04); }
 .app-item-t { font-family:var(--fsr); font-size:1.25rem; font-weight:300; margin-bottom:.75rem; }
 .app-item-d { font-size:.92rem; line-height:1.7; color:rgba(40,38,35,.7); }
 html[lang="he"] .app-item-d { font-family:var(--fsr); font-size:.98rem; }
 .app-badge { display:inline-block; margin-top:.75rem; padding:.3rem .75rem; border:1px solid var(--line); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.hw-banner { overflow:hidden; margin-bottom:4rem; background:rgba(211,202,186,.35); }
+.hw-banner img { width:100%; height:100%; object-fit:cover; object-position:center 20%; max-height:520px; display:block; }
+@media(min-width:768px){ .hw-banner img{ max-height:620px; } }
 .app-cta { margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:1.25rem; }
 @media(min-width:768px){ .app-cta{ flex-direction:row; align-items:center; justify-content:space-between; gap:3rem; } }
 .app-cta-t { font-family:var(--fsr); font-size:1.35rem; font-weight:300; max-width:30rem; line-height:1.5; }
@@ -496,6 +502,9 @@ function buildHome() {
         <p class="label muted"><span data-he>למה Team Haim</span><span data-en>Why Team Haim</span></p>
         <h2 class="hw-h2"><span data-he>תוכנית אימון אישית שבנויה בדיוק בשבילך.</span><span data-en>A personal training plan built exactly for you.</span></h2>
       </div>
+      <div class="hw-banner">
+        <img src="yoni-last.jpeg" alt="יוני חיים בריצה"/>
+      </div>
       <div class="hw-grid">
         <div class="hw-item">
           <p class="hw-item-t"><span data-he>מבוסס נתונים</span><span data-en>Data-driven</span></p>
@@ -522,16 +531,19 @@ function buildHome() {
       </div>
       <div class="app-grid">
         <div class="app-item">
+          <div class="app-img"><img src="yoni-train.jpeg" alt="אימון ריצה"/></div>
           <p class="app-item-t"><span data-he>תכנית אימון חיה</span><span data-en>Live training plan</span></p>
           <p class="app-item-d"><span data-he>ראה את כל האימונים שלך לפי יום, עם הוראות מדויקות מהמאמן. התכנית מתעדכנת בזמן אמת בלי שתצטרך לבדוק שוב.</span><span data-en>See every workout by day, with precise instructions from the coach. The plan updates in real time, no need to double-check.</span></p>
           <span class="app-badge">iOS · Android</span>
         </div>
         <div class="app-item">
+          <div class="app-img"><img src="race-1.jpg" alt="תחרות ריצה"/></div>
           <p class="app-item-t"><span data-he>תיעוד ומעקב</span><span data-en>Log &amp; track</span></p>
           <p class="app-item-d"><span data-he>רשום כל אימון, חבר את Strava, וצפה בגרפים שמראים את ההתקדמות שלך לאורך הזמן. כולל עומסי אימון, דופק ויעדים.</span><span data-en>Log every session, connect Strava, and see charts showing your progress over time. Including training load, heart rate, and goals.</span></p>
           <span class="app-badge">Strava sync</span>
         </div>
         <div class="app-item">
+          <div class="app-img"><img src="yoni-main.jpg" alt="יוני חיים מאמן ריצה"/></div>
           <p class="app-item-t"><span data-he>תקשורת ישירה</span><span data-en>Direct communication</span></p>
           <p class="app-item-d"><span data-he>קבל הודעות ועדכונים מהמאמן ישירות לאפליקציה. שאלות, שינויים בתכנית ומשוב על אימונים. הכל במקום אחד.</span><span data-en>Get messages and updates from the coach directly in the app. Questions, plan changes, and workout feedback. All in one place.</span></p>
           <span class="app-badge">Push notifications</span>
