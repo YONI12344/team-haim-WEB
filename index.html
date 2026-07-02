@@ -343,6 +343,7 @@ html[lang="he"] .app-item-d { font-family:var(--fsr); font-size:.98rem; }
   <a href="#/team"     data-nav class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>הקבוצה</span><span data-en>The Team</span></a>
   <a href="#/programs" data-nav class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>תוכניות</span><span data-en>Programs</span></a>
   <a href="#/contact"  data-nav class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>יצירת קשר</span><span data-en>Contact</span></a>
+  <a href="https://yoni12344.github.io/Team_Haim_App_web/" target="_blank" rel="noopener" class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>האפליקציה</span><span data-en>App</span></a>
 </div>
 
 <header id="hdr">
@@ -356,6 +357,7 @@ html[lang="he"] .app-item-d { font-family:var(--fsr); font-size:.98rem; }
       <a href="#/team"     class="label link-u"><span data-he>הקבוצה</span><span data-en>The Team</span></a>
       <a href="#/programs" class="label link-u"><span data-he>תוכניות</span><span data-en>Programs</span></a>
       <a href="#/contact"  class="label link-u"><span data-he>יצירת קשר</span><span data-en>Contact</span></a>
+      <a href="https://yoni12344.github.io/Team_Haim_App_web/" target="_blank" rel="noopener" class="label link-u"><span data-he>האפליקציה</span><span data-en>App</span></a>
     </nav>
     <div class="hdr-right">
       <button class="lang-btn label" id="lang-btn" aria-label="Switch language">
@@ -449,6 +451,7 @@ function footer() {
         <a href="#/team"     class="link-u"><span data-he>הקבוצה</span><span data-en>The Team</span></a>
         <a href="#/programs" class="link-u"><span data-he>תוכניות</span><span data-en>Programs</span></a>
         <a href="#/contact"  class="link-u"><span data-he>יצירת קשר</span><span data-en>Contact</span></a>
+        <a href="https://yoni12344.github.io/Team_Haim_App_web/" target="_blank" rel="noopener" class="link-u"><span data-he>האפליקציה</span><span data-en>App</span></a>
         <p class="ftr-copy">© ${new Date().getFullYear()} Team Haim · <span data-he>יהונתן חיים · מאמן ריצה מוסמך</span><span data-en>Yoni Haim · Certified Running Coach</span></p>
       </div>
     </div>
@@ -469,7 +472,7 @@ function buildHome() {
   const cats = [
     { he:'ריצה תחרותית', en:'Competitive running', href:'#/team' },
     { he:'אימון אישי אונליין', en:'Personal online coaching', href:'#/programs' },
-    { he:'אפליקציית Team Haim', en:'Team Haim App', href:'#/programs' },
+    { he:'אפליקציית Team Haim', en:'Team Haim App', href:'https://yoni12344.github.io/Team_Haim_App_web/' },
   ].map(c => `<a href="${c.href}" class="label link-u"><span data-he>${c.he}</span><span data-en>${c.en}</span></a>`).join('');
 
   const slides = SLIDES.map((s,i) => `
@@ -551,7 +554,10 @@ function buildHome() {
       </div>
       <div class="app-cta">
         <p class="app-cta-t"><span data-he>האפליקציה כלולה בכל תוכנית ליווי. מצטרף, מקבל גישה.</span><span data-en>The app is included with every coaching plan. Join and you get access.</span></p>
-        <a href="#/contact" class="btn-primary label"><span data-he>אני רוצה להצטרף</span><span data-en>I want to join</span>${arrR()}</a>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+          <a href="#/contact" class="btn-primary label"><span data-he>אני רוצה להצטרף</span><span data-en>I want to join</span>${arrR()}</a>
+          <a href="https://yoni12344.github.io/Team_Haim_App_web/" target="_blank" rel="noopener" class="btn-primary label" style="background:transparent;color:var(--ink);border-color:var(--line);"><span data-he>גלה את האפליקציה</span><span data-en>Explore the app</span>${arrR()}</a>
+        </div>
       </div>
     </div>
   </main>${footer()}`;
@@ -592,8 +598,8 @@ function buildAbout() {
         <div class="ab-c7">
           <p class="label ab-eye"><span data-he>המאמן</span><span data-en>The Coach</span></p>
           <h1 class="ab-h1">
-            <span data-he>הייתי בעולם הריצה. התאמנתי עם המאמנים הטובים בעולם. מה שלמדתי, אני כאן לתת לך.</span>
-            <span data-en>I've been in the running world. Trained with the best coaches in the world. What I learned, I'm here to give to you.</span>
+            <span data-he>הייתי בעולם הריצה. התאמנתי עם המאמנים הטובים בעולם. כל מה שלמדתי, אני כאן לתת לך.</span>
+            <span data-en>I've been in the running world. Trained with the best coaches. Everything I learned, I'm here to give to you.</span>
           </h1>
           <div class="ab-body">
             <p><span data-he>אני יוני חיים, אלוף ישראל פעמיים בריצת 3000 מטר מכשולים וחבר נבחרת ישראל. בארבע השנים האחרונות התחרתי בארצות הברית עם אחד הקבוצות הטובות ב-NCAA Division I, והתאמנתי עם מאמנים שעבדו עם הרצים הטובים בעולם.</span>
