@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>יוני חיים | מאמן ריצה אישי</title>
-<!-- TODO: Add favicon when provided -->
 <meta name="description" content="אימון ריצה אישי עם יוני חיים — אלוף ישראל ומאמן ריצה מוסמך. תוכנית מותאמת אישית, ליווי צמוד ותוצאות אמיתיות.">
 <meta name="theme-color" content="#0a1628">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta property="og:title" content="יוני חיים | מאמן ריצה אישי — Team Haim">
-<meta property="og:description" content="אימון ריצה אישי עם יוני חיים — אלוף ישראל ומאמן ריצה מוסמך. תוכנית מותאמת אישית, ליווי צמוד ותוצאות אמיתיות.">
+<meta property="og:description" content="אימון ריצה אישי עם יוני חיים — אלוף ישראל ומאמן ריצה מוסמך.">
 <meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Heebo:wght@300;400;500;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,8 +21,8 @@
     <div class="nav-logo">TEAM HAIM</div>
     <ul class="nav-links">
       <li><a href="#about">עליי</a></li>
-      <li><a href="#benefits">מה תקבל</a></li>
-      <li><a href="#method">שיטה</a></li>
+      <li><a href="#benefits">שירותים</a></li>
+      <li><a href="#method">תהליך</a></li>
       <li><a href="#app">האפליקציה</a></li>
       <li><a href="#contact">צור קשר</a></li>
     </ul>
@@ -39,8 +38,8 @@
   <div class="mobile-logo">TEAM HAIM</div>
   <nav class="mobile-nav">
     <a href="#about"    onclick="closeMenu()">עליי</a>
-    <a href="#benefits" onclick="closeMenu()">מה תקבל</a>
-    <a href="#method"   onclick="closeMenu()">שיטה</a>
+    <a href="#benefits" onclick="closeMenu()">שירותים</a>
+    <a href="#method"   onclick="closeMenu()">תהליך</a>
     <a href="#app"      onclick="closeMenu()">האפליקציה</a>
     <a href="#contact"  onclick="closeMenu()">צור קשר</a>
   </nav>
@@ -54,7 +53,7 @@
     <div class="hero-photo-overlay"></div>
   </div>
   <div class="hero-body">
-
+    <p class="hero-eyebrow">מאמן ריצה אישי</p>
     <h1 class="hero-title">
       רצים עם <span class="gold">הלב.</span><br>
       חוגגים תחיים.
@@ -103,12 +102,17 @@
       <div class="about-text">
         <div class="eyebrow">קצת עליי</div>
         <h2 class="section-title">יהונתן חיים<br><span class="gold">Yoni Haim</span></h2>
-        <div class="about-pills">
-          <span class="pill">🥇 אלוף ישראל פעמיים</span>
-          <span class="pill">🌍 נבחרת ישראל, אליפות אירופה ועולם</span>
-          <span class="pill">📋 מאמן ריצה מוסמך</span>
-          <span class="pill">🎓 הנדסה אזרחית, George Washington University</span>
+
+        <div class="about-creds">
+          <span>אלוף ישראל פעמיים</span>
+          <span class="cred-dot"></span>
+          <span>נבחרת ישראל</span>
+          <span class="cred-dot"></span>
+          <span>מאמן ריצה מוסמך</span>
+          <span class="cred-dot"></span>
+          <span>הנדסה אזרחית, GWU</span>
         </div>
+
         <p class="body-text">
           נעים להכיר, אני יהונתן חיים (25). חבר נבחרת ישראל ואלוף ישראל פעמיים בריצת 3000 מטר מכשולים. ייצגתי את ישראל באליפויות אירופה ועולם.
         </p>
@@ -147,54 +151,71 @@
     <div class="eyebrow">מה כלול בתוכנית</div>
     <h2 class="section-title">מה אתה <span class="gold">מקבל.</span></h2>
     <p class="section-sub">מעטפת מקצועית מלאה. ליווי אמיתי מהאבחון הראשוני ועד קו הסיום.</p>
-    <div class="benefits-grid">
 
-      <div class="benefit-card">
-        <div class="benefit-icon">🎯</div>
-        <div class="benefit-title">אבחון מעמיק. מטרה ברורה.</div>
-        <div class="benefit-desc">שיחת היכרות שמבינה לעומק את רמתך, היסטוריית האימונים שלך והמטרה שהצבת לעצמך.</div>
+    <div class="benefit-list">
+
+      <div class="bl-item">
+        <span class="bl-num">01</span>
+        <div class="bl-content">
+          <div class="bl-title">אבחון מעמיק ומטרה ברורה</div>
+          <div class="bl-desc">שיחת היכרות שמבינה לעומק את רמתך, היסטוריית האימונים שלך והמטרה שהצבת לעצמך.</div>
+        </div>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">📋</div>
-        <div class="benefit-title">תוכנית שנבנית עליך בלבד</div>
-        <div class="benefit-desc">כל שבוע מתוכנן לפי הגוף שלך, הזמן שיש לך והמטרה שהצבת.</div>
+      <div class="bl-item">
+        <span class="bl-num">02</span>
+        <div class="bl-content">
+          <div class="bl-title">תוכנית שנבנית עליך בלבד</div>
+          <div class="bl-desc">כל שבוע מתוכנן לפי הגוף שלך, הזמן שיש לך והמטרה שהצבת.</div>
+        </div>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">⌚</div>
-        <div class="benefit-title">הנתונים שלך מגיעים אליי אוטומטית</div>
-        <div class="benefit-desc">סנכרון ישיר עם Garmin ו-Strava. אני רואה בדיוק איך כל אימון הלך.</div>
+      <div class="bl-item">
+        <span class="bl-num">03</span>
+        <div class="bl-content">
+          <div class="bl-title">הנתונים שלך מגיעים אליי אוטומטית</div>
+          <div class="bl-desc">סנכרון ישיר עם Garmin ו-Strava. אני רואה בדיוק איך כל אימון הלך.</div>
+        </div>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">📊</div>
-        <div class="benefit-title">משוב שבועי שמקדם אותך</div>
-        <div class="benefit-desc">ניתוח שבועי של הביצועים עם התאמות מיידיות. הכושר שלך ממשיך לעלות.</div>
+      <div class="bl-item">
+        <span class="bl-num">04</span>
+        <div class="bl-content">
+          <div class="bl-title">משוב שבועי שמקדם אותך</div>
+          <div class="bl-desc">ניתוח שבועי של הביצועים עם התאמות מיידיות. הכושר שלך ממשיך לעלות.</div>
+        </div>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">💪</div>
-        <div class="benefit-title">כוח שהופך אותך לרץ טוב יותר</div>
-        <div class="benefit-desc">תוכנית כוח ייעודית לרצים. מחזקת את הגוף, מונעת פציעות ומוסיפה קצב.</div>
+      <div class="bl-item">
+        <span class="bl-num">05</span>
+        <div class="bl-content">
+          <div class="bl-title">כוח שהופך אותך לרץ טוב יותר</div>
+          <div class="bl-desc">תוכנית כוח ייעודית לרצים. מחזקת את הגוף, מונעת פציעות ומוסיפה קצב.</div>
+        </div>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">💬</div>
-        <div class="benefit-title">זמין לך. תמיד.</div>
-        <div class="benefit-desc">שאלות, עדכונים, שינויים בתוכנית? מענה מהיר דרך האפליקציה ובוואטסאפ.</div>
+      <div class="bl-item">
+        <span class="bl-num">06</span>
+        <div class="bl-content">
+          <div class="bl-title">זמין לך. תמיד.</div>
+          <div class="bl-desc">שאלות, עדכונים, שינויים בתוכנית? מענה מהיר דרך האפליקציה ובוואטסאפ.</div>
+        </div>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">🏁</div>
-        <div class="benefit-title">הגעה מדויקת לקו הזינוק</div>
-        <div class="benefit-desc">פירוק עומסים חכם ואסטרטגיית קצב שמביאה אותך לתחרות בשיא הכושר שלך.</div>
+      <div class="bl-item">
+        <span class="bl-num">07</span>
+        <div class="bl-content">
+          <div class="bl-title">הגעה מדויקת לקו הזינוק</div>
+          <div class="bl-desc">פירוק עומסים חכם ואסטרטגיית קצב שמביאה אותך לתחרות בשיא הכושר שלך.</div>
+        </div>
       </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">📅</div>
-        <div class="benefit-title">ראייה שנתית לאורך כל העונה</div>
-        <div class="benefit-desc">כל מרוץ וכל שלב הכנה מתוכנן מראש. שיאי הכושר שלך מגיעים בדיוק בזמן הנכון.</div>
+      <div class="bl-item">
+        <span class="bl-num">08</span>
+        <div class="bl-content">
+          <div class="bl-title">ראייה שנתית לאורך כל העונה</div>
+          <div class="bl-desc">כל מרוץ וכל שלב הכנה מתוכנן מראש. שיאי הכושר שלך מגיעים בדיוק בזמן הנכון.</div>
+        </div>
       </div>
 
     </div>
@@ -321,7 +342,7 @@
 
             <div class="pws-coach-note">
               <div class="pws-note-lbl">הערת המאמן</div>
-              <div class="pws-note-text">אני מרגיש גאווה רבה בהתקדמותך, יהונתן! המשך לעבוד קשה ולהאמין בעצמך, אתה עושה צעדים.</div>
+              <div class="pws-note-text">אני מרגיש גאווה רבה בהתקדמותך. המשך לעבוד קשה ולהאמין בעצמך.</div>
             </div>
 
             <div class="pws-bottomnav">
@@ -398,32 +419,22 @@
 
     </div>
 
-    <!-- 5 feature cards -->
-    <div class="app-features-grid">
-      <div class="app-feat-v2">
-        <div class="af-icon">📋</div>
-        <div class="af-title">תוכנית אימונים אישית</div>
-        <div class="af-desc">כל האימונים מסודרים לפי ימים, עם הסברים מלאים לכל אחד.</div>
+    <!-- 3 clean text features -->
+    <div class="app-features-clean">
+      <div class="afc-item">
+        <div class="afc-num">01</div>
+        <div class="afc-title">תוכנית אישית</div>
+        <div class="afc-desc">כל האימונים מסודרים לפי ימים, עם הסברים מלאים לכל אחד.</div>
       </div>
-      <div class="app-feat-v2">
-        <div class="af-icon">⚡</div>
-        <div class="af-title">סנכרון Strava אוטומטי</div>
-        <div class="af-desc">הנתונים שלך מגיעים אליי אוטומטית אחרי כל ריצה.</div>
+      <div class="afc-item">
+        <div class="afc-num">02</div>
+        <div class="afc-title">סנכרון Strava אוטומטי</div>
+        <div class="afc-desc">הנתונים שלך מגיעים אליי אוטומטית אחרי כל ריצה.</div>
       </div>
-      <div class="app-feat-v2">
-        <div class="af-icon">📊</div>
-        <div class="af-title">סטטיסטיקות שבועיות</div>
-        <div class="af-desc">ק"מ, מאמץ ממוצע ועומס שבועי. הכל נראה ומנוהל.</div>
-      </div>
-      <div class="app-feat-v2">
-        <div class="af-icon">💬</div>
-        <div class="af-title">הערות משוב מהמאמן</div>
-        <div class="af-desc">פידבק אישי ישיר לאפליקציה שלך אחרי כל אימון.</div>
-      </div>
-      <div class="app-feat-v2">
-        <div class="af-icon">🔔</div>
-        <div class="af-title">התראות בזמן אמת</div>
-        <div class="af-desc">עדכונים ושינויים בתוכנית מגיעים אליך מיידית.</div>
+      <div class="afc-item">
+        <div class="afc-num">03</div>
+        <div class="afc-title">משוב ישיר מהמאמן</div>
+        <div class="afc-desc">פידבק אישי לאפליקציה שלך אחרי כל אימון, עם עדכונים בזמן אמת.</div>
       </div>
     </div>
 
@@ -444,7 +455,6 @@
         <span class="cta-tag">ליווי שבועי</span>
         <span class="cta-tag">אפליקציה ייעודית</span>
         <span class="cta-tag">הכנה לתחרויות</span>
-        <span class="cta-tag">תוכנית כוח</span>
       </div>
       <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%99%D7%9B%D7%A8%D7%95%D7%AA" target="_blank" class="btn-primary">קבע שיחת היכרות עכשיו</a>
     </div>
@@ -457,16 +467,17 @@
     <div class="eyebrow">צור קשר</div>
     <h2 class="section-title">מתחילים <span class="gold">עכשיו.</span></h2>
     <p class="section-sub">שלח לי הודעה ונקבע שיחת היכרות קצרה. ללא התחייבות. ללא עלות.</p>
-    <div class="contact-cards">
-      <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%9F" target="_blank" class="contact-card">
-        <div class="contact-icon">💬</div>
-        <div class="contact-label">וואטסאפ</div>
-        <div class="contact-sub">0558814177</div>
+    <div class="contact-clean">
+      <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%9F" target="_blank" class="contact-clean-item">
+        <span class="cci-label">WhatsApp</span>
+        <span class="cci-value">055-881-4177</span>
+        <span class="cci-arrow">↗</span>
       </a>
-      <a href="mailto:info.teamhaim@gmail.com" class="contact-card">
-        <div class="contact-icon">✉️</div>
-        <div class="contact-label">מייל</div>
-        <div class="contact-sub">info.teamhaim@gmail.com</div>
+      <div class="cci-divider"></div>
+      <a href="mailto:info.teamhaim@gmail.com" class="contact-clean-item">
+        <span class="cci-label">מייל</span>
+        <span class="cci-value">info.teamhaim@gmail.com</span>
+        <span class="cci-arrow">↗</span>
       </a>
     </div>
   </div>
