@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Team Haim — יוני חיים, מאמן ריצה אישי</title>
-<meta name="description" content="Team Haim — ליווי אישי לרצים. יוני חיים, אלוף ישראל ומאמן ריצה, בונה תהליך אימון מדויק ומבוסס נתונים."/>
-<meta property="og:title" content="Team Haim — יוני חיים, מאמן ריצה אישי"/>
+<title>Team Haimיוני חיים, מאמן ריצה אישי</title>
+<meta name="description" content="Team Haimליווי אישי לרצים. יוני חיים, אלוף ישראל ומאמן ריצה, בונה תהליך אימון מדויק ומבוסס נתונים."/>
+<meta property="og:title" content="Team Haimיוני חיים, מאמן ריצה אישי"/>
 <meta property="og:description" content="ליווי אישי לרצים שרוצים להתקדם באמת. תוכנית מותאמת, נתונים אמיתיים, ליווי צמוד."/>
 <meta property="og:type" content="website"/>
 <meta name="theme-color" content="#fcfbf9"/>
@@ -232,7 +232,7 @@ html[lang="he"] .tm-step-d { font-family:var(--fsr); font-size:.98rem; }
 .tm-fit-l { display:flex; flex-direction:column; gap:.9rem; }
 .tm-fit-l li { font-size:.92rem; line-height:1.6; color:rgba(40,38,35,.72); padding-inline-end:1.1rem; position:relative; }
 html[lang="he"] .tm-fit-l li { font-family:var(--fsr); font-size:.98rem; }
-.tm-fit-l li::before { content:'—'; position:absolute; inset-inline-end:0; color:var(--muted); }
+.tm-fit-l li::before { content:''; position:absolute; inset-inline-end:0; color:var(--muted); }
 
 .tm-close { margin-top:5.5rem; padding-top:3rem; border-top:1px solid var(--line); max-width:36rem; }
 .tm-close-t { font-family:var(--fsr); font-size:1.5rem; font-weight:300; line-height:1.45; margin-bottom:1.75rem; }
@@ -299,6 +299,23 @@ html[lang="he"] .wsr-desc { font-family:var(--fsr); font-size:.97rem; }
 @media(max-width:480px){ .fg-row{ grid-template-columns:1fr; } }
 .btn-send { display:inline-block; background:var(--ink); color:var(--paper); border:1px solid var(--ink); padding:1rem 2.5rem; transition:background .4s,color .4s; margin-top:.5rem; cursor:pointer; font-family:var(--fs); }
 .btn-send:hover { background:transparent; color:var(--ink); }
+
+/* ── APP SECTION ── */
+.app-wrap { max-width:1600px; margin-inline:auto; padding-inline:1.5rem; padding-block:5rem; border-top:1px solid var(--line); }
+@media(min-width:768px){ .app-wrap{ padding-inline:2.5rem; padding-block:7rem; } }
+.app-head { max-width:36rem; margin-bottom:3.5rem; }
+.app-h2 { font-family:var(--fsr); font-weight:300; font-size:2rem; line-height:1.25; margin-top:.9rem; }
+@media(min-width:768px){ .app-h2{ font-size:2.75rem; } }
+.app-grid { display:grid; grid-template-columns:1fr; gap:2.5rem; }
+@media(min-width:768px){ .app-grid{ grid-template-columns:repeat(3,1fr); gap:3rem; } }
+.app-item { padding-top:1.5rem; border-top:1px solid var(--line); }
+.app-item-t { font-family:var(--fsr); font-size:1.25rem; font-weight:300; margin-bottom:.75rem; }
+.app-item-d { font-size:.92rem; line-height:1.7; color:rgba(40,38,35,.7); }
+html[lang="he"] .app-item-d { font-family:var(--fsr); font-size:.98rem; }
+.app-badge { display:inline-block; margin-top:.75rem; padding:.3rem .75rem; border:1px solid var(--line); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.app-cta { margin-top:3.5rem; padding-top:2.5rem; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:1.25rem; }
+@media(min-width:768px){ .app-cta{ flex-direction:row; align-items:center; justify-content:space-between; gap:3rem; } }
+.app-cta-t { font-family:var(--fsr); font-size:1.35rem; font-weight:300; max-width:30rem; line-height:1.5; }
 
 /* ── WhatsApp FAB ── */
 .wa-fab {
@@ -438,7 +455,7 @@ let _slideIdx = 0;
 
 const SLIDES = [
   { img:'yoni-main.jpg',    catHe:'אימון',  catEn:'Training', tHe:'אימונים ברמה הגבוהה ביותר',       tEn:'Training at the highest level' },
-  { img:'race-1.jpg',       catHe:'תחרות',  catEn:'Race',     tHe:'ריצה תחרותית — NCAA Division I',   tEn:'Competing at NCAA Division I' },
+  { img:'race-1.jpg',       catHe:'תחרות',  catEn:'Race',     tHe:'ריצה תחרותיתNCAA Division I',   tEn:'Competing at NCAA Division I' },
   { img:'yoni-train.jpeg',  catHe:'ליווי',  catEn:'Coaching', tHe:'ליווי אישי לאורך כל התהליך',       tEn:'Personal guidance, every step' },
 ];
 
@@ -446,7 +463,7 @@ function buildHome() {
   const cats = [
     { he:'ריצה תחרותית', en:'Competitive running', href:'#/team' },
     { he:'אימון אישי אונליין', en:'Personal online coaching', href:'#/programs' },
-    { he:'הכנה לתחרויות', en:'Race preparation', href:'#/programs' },
+    { he:'אפליקציית Team Haim', en:'Team Haim App', href:'#/programs' },
   ].map(c => `<a href="${c.href}" class="label link-u"><span data-he>${c.he}</span><span data-en>${c.en}</span></a>`).join('');
 
   const slides = SLIDES.map((s,i) => `
@@ -459,8 +476,8 @@ function buildHome() {
     <section class="home-hero">
       <p class="label home-eyebrow"><span data-he>ריצה תחרותית · אימון אישי אונליין</span><span data-en>Competitive running · Personal online coaching</span></p>
       <p class="home-tag">
-        <span data-he>אימון ריצה מדויק ואישי — לרצים שרוצים להתקדם באמת, לא רק להתאמן קשה.</span>
-        <span data-en>Precise, personal running coaching — for runners who want real progress, not just hard training.</span>
+        <span data-he>אימון ריצה מדויק ואישילרצים שרוצים להתקדם באמת, לא רק להתאמן קשה.</span>
+        <span data-en>Precise, personal running coachingfor runners who want real progress, not just hard training.</span>
       </p>
       <nav class="home-cats label">${cats}</nav>
       <div class="feat" id="feat-card">
@@ -482,18 +499,46 @@ function buildHome() {
       <div class="hw-grid">
         <div class="hw-item">
           <p class="hw-item-t"><span data-he>מבוסס נתונים</span><span data-en>Data-driven</span></p>
-          <p class="hw-item-d"><span data-he>מעקב דופק, עומסי אימון ותגובה פיזיולוגית — כדי להבין איך הגוף שלך מגיב באמת, לא רק איך הוא מרגיש.</span><span data-en>Heart-rate tracking, training load, and physiological response — to understand how your body actually reacts, not just how it feels.</span></p>
+          <p class="hw-item-d"><span data-he>מעקב דופק, עומסי אימון ותגובה פיזיולוגיתכדי להבין איך הגוף שלך מגיב באמת, לא רק איך הוא מרגיש.</span><span data-en>Heart-rate tracking, training load, and physiological responseto understand how your body actually reacts, not just how it feels.</span></p>
         </div>
         <div class="hw-item">
           <p class="hw-item-t"><span data-he>מותאם אישית</span><span data-en>Personalized</span></p>
-          <p class="hw-item-d"><span data-he>כל תכנית נבנית לפי הרץ הספציפי, לא לפי תבנית קבועה — ומתעדכנת כל הזמן לפי הביצוע בפועל.</span><span data-en>Every plan is built around the individual runner, not a fixed template — and adjusts continuously based on real performance.</span></p>
+          <p class="hw-item-d"><span data-he>כל תכנית נבנית לפי הרץ הספציפי, לא לפי תבנית קבועהומתעדכנת כל הזמן לפי הביצוע בפועל.</span><span data-en>Every plan is built around the individual runner, not a fixed templateand adjusts continuously based on real performance.</span></p>
         </div>
         <div class="hw-item">
           <p class="hw-item-t"><span data-he>ליווי אמיתי</span><span data-en>Real accompaniment</span></p>
-          <p class="hw-item-d"><span data-he>אני מלווה את התהליך לאורך השבוע, לא רק שולח אימון ונעלם. שאלות, התאמות, הכנה לתחרות — לאורך כל הדרך.</span><span data-en>I stay with you through the week, not just send a workout and disappear. Questions, adjustments, race prep — all along the way.</span></p>
+          <p class="hw-item-d"><span data-he>אני מלווה את התהליך לאורך השבוע, לא רק שולח אימון ונעלם. שאלות, התאמות, הכנה לתחרותלאורך כל הדרך.</span><span data-en>I stay with you through the week, not just send a workout and disappear. Questions, adjustments, race prepall along the way.</span></p>
         </div>
       </div>
       <div class="hw-cta">
+        <a href="#/contact" class="btn-primary label"><span data-he>אני רוצה להצטרף</span><span data-en>I want to join</span>${arrR()}</a>
+      </div>
+    </div>
+
+    <div class="app-wrap">
+      <div class="app-head">
+        <p class="label muted"><span data-he>האפליקציה</span><span data-en>The App</span></p>
+        <h2 class="app-h2"><span data-he>ניהול האימונים שלך, הכל במקום אחד.</span><span data-en>All your training, in one place.</span></h2>
+      </div>
+      <div class="app-grid">
+        <div class="app-item">
+          <p class="app-item-t"><span data-he>תכנית אימון חיה</span><span data-en>Live training plan</span></p>
+          <p class="app-item-d"><span data-he>ראה את כל האימונים שלך לפי יום, עם הוראות מדויקות מהמאמן. התכנית מתעדכנת בזמן אמת בלי שתצטרך לבדוק שוב.</span><span data-en>See every workout by day, with precise instructions from the coach. The plan updates in real time, no need to double-check.</span></p>
+          <span class="app-badge">iOS · Android</span>
+        </div>
+        <div class="app-item">
+          <p class="app-item-t"><span data-he>תיעוד ומעקב</span><span data-en>Log &amp; track</span></p>
+          <p class="app-item-d"><span data-he>רשום כל אימון, חבר את Strava, וצפה בגרפים שמראים את ההתקדמות שלך לאורך הזמןכולל עומסי אימון, דופק ויעדים.</span><span data-en>Log every session, connect Strava, and see charts showing your progress over time including training load, heart rate, and goals.</span></p>
+          <span class="app-badge">Strava sync</span>
+        </div>
+        <div class="app-item">
+          <p class="app-item-t"><span data-he>תקשורת ישירה</span><span data-en>Direct communication</span></p>
+          <p class="app-item-d"><span data-he>קבל הודעות ועדכונים מהמאמן ישירות לאפליקציה. שאלות, שינויים בתכנית ומשוב על אימוניםהכל במקום אחד.</span><span data-en>Get messages and updates from the coach directly in the app. Questions, plan changes, and workout feedback, all in one place.</span></p>
+          <span class="app-badge">Push notifications</span>
+        </div>
+      </div>
+      <div class="app-cta">
+        <p class="app-cta-t"><span data-he>האפליקציה כלולה בכל תוכנית ליווי. מצטרףמקבל גישה.</span><span data-en>The app is included with every coaching plan. Join and you get access.</span></p>
         <a href="#/contact" class="btn-primary label"><span data-he>אני רוצה להצטרף</span><span data-en>I want to join</span>${arrR()}</a>
       </div>
     </div>
@@ -535,16 +580,16 @@ function buildAbout() {
         <div class="ab-c7">
           <p class="label ab-eye"><span data-he>המאמן</span><span data-en>The Coach</span></p>
           <h1 class="ab-h1">
-            <span data-he>אני ניגש לריצה מתוך חשיבה אנליטית וספורטיבית — גם יחד.</span>
-            <span data-en>I approach running through analytical thinking and athletic instinct — together.</span>
+            <span data-he>אני ניגש לריצה מתוך חשיבה אנליטית וספורטיביתגם יחד.</span>
+            <span data-en>I approach running through analytical thinking and athletic instincttogether.</span>
           </h1>
           <div class="ab-body">
             <p><span data-he>אני יהונתן (יוני) חיים, רץ תחרותי ומאמן ריצה. אלוף ישראל פעמיים בריצת 3000 מטר מכשולים, וחבר נבחרת ישראל באליפויות אירופה ועולם. בארבע השנים האחרונות התחרתי והתאמנתי בארצות הברית ברמת NCAA Division I.</span>
                <span data-en>I'm Yoni Haim, a competitive runner and running coach. I'm a two-time Israeli champion in the 3000m steeplechase and a member of the Israeli national team at European and World Championships. For the past four years I've competed and trained in the US at NCAA Division I level.</span></p>
             <p><span data-he>במקביל אני לומד הנדסה אזרחית ב-George Washington University, ומשלב חשיבה אנליטית עם ניסיון אמיתי מהמסלול כדי לבנות שיטת אימון שאני עובד איתה גם בעצמי וגם עם כל רץ שאני מלווה.</span>
                <span data-en>I also study civil engineering at George Washington University, combining an analytical mindset with real track experience to build a training method I use both for myself and with every runner I coach.</span></p>
-            <p><span data-he>אני רואה הרבה רצים שעובדים קשה אך לא תמיד מתקדמים — לא כי הם לא מספיק טובים, אלא כי משהו בתהליך לא מדויק מספיק. המטרה שלי היא לתת לכל רץ בדיוק את מה שהוא צריך, כדי שהעבודה הקשה שלו תביא לתוצאות אמיתיות.</span>
-               <span data-en>I see many runners who work hard but don't always progress — not because they're not good enough, but because something in the process isn't precise enough. My goal is to give each runner exactly what they need, so their hard work produces real results.</span></p>
+            <p><span data-he>אני רואה הרבה רצים שעובדים קשה אך לא תמיד מתקדמיםלא כי הם לא מספיק טובים, אלא כי משהו בתהליך לא מדויק מספיק. המטרה שלי היא לתת לכל רץ בדיוק את מה שהוא צריך, כדי שהעבודה הקשה שלו תביא לתוצאות אמיתיות.</span>
+               <span data-en>I see many runners who work hard but don't always progressnot because they're not good enough, but because something in the process isn't precise enough. My goal is to give each runner exactly what they need, so their hard work produces real results.</span></p>
           </div>
           <div class="ab-facts">
             <div><p class="label ab-fk"><span data-he>הישגים</span><span data-en>Achievements</span></p><p class="ab-fv"><span data-he>אלוף ישראל פעמיים · נבחרת ישראל</span><span data-en>2× Israeli champion · National team</span></p></div>
@@ -564,16 +609,16 @@ function buildAbout() {
 function buildTeam() {
   const steps = [
     { n:'01', tHe:'שיחת היכרות', tEn:'Discovery call',
-      dHe:'מכירים, מבינים איפה אתה נמצא, מה המטרות שלך ואיך אתה מתאמן היום — ובודקים יחד שיש התאמה.',
+      dHe:'מכירים, מבינים איפה אתה נמצא, מה המטרות שלך ואיך אתה מתאמן היוםובודקים יחד שיש התאמה.',
       dEn:'We get to know each other, understand where you are, your goals, and check together that it\'s a fit.' },
     { n:'02', tHe:'בניית תכנית אישית', tEn:'Building your personal plan',
-      dHe:'תכנית אימון שנבנית סביבך — הרקע שלך, הזמינות שלך, והמטרה שלך. לא תבנית קבועה.',
-      dEn:'A training plan built around you — your background, your availability, your goal. Never a fixed template.' },
+      dHe:'תכנית אימון שנבנית סביבךהרקע שלך, הזמינות שלך, והמטרה שלך. לא תבנית קבועה.',
+      dEn:'A training plan built around youyour background, your availability, your goal. Never a fixed template.' },
     { n:'03', tHe:'ליווי שוטף לפי נתונים', tEn:'Ongoing, data-based guidance',
-      dHe:'התכנית מתעדכנת באופן שוטף לפי הביצוע בפועל, עומסי האימון ותגובת הגוף — לאורך כל השבוע.',
-      dEn:'The plan is updated continuously based on real performance and training load — throughout the week.' },
+      dHe:'התכנית מתעדכנת באופן שוטף לפי הביצוע בפועל, עומסי האימון ותגובת הגוףלאורך כל השבוע.',
+      dEn:'The plan is updated continuously based on real performance and training loadthroughout the week.' },
     { n:'04', tHe:'הכנה לתחרות', tEn:'Race preparation',
-      dHe:'כשיש תחרות מטרה — בונים שלב מדויק שמכין אותך פיזית ומנטלית ליום עצמו.',
+      dHe:'כשיש תחרות מטרהבונים שלב מדויק שמכין אותך פיזית ומנטלית ליום עצמו.',
       dEn:'When there\'s a target race, we build a precise block that prepares you physically and mentally for race day.' },
   ].map(s => `<div class="tm-step">
       <p class="tm-step-n">${s.n}</p>
@@ -601,8 +646,8 @@ function buildTeam() {
       <p class="label muted"><span data-he>הקבוצה</span><span data-en>The Team</span></p>
       <h1 class="tm-h1" style="margin-top:.75rem"><span data-he>מי שמצטרף ל-Team Haim, לא רץ לבד.</span><span data-en>Join Team Haim, and you don't run alone.</span></h1>
       <p class="tm-intro">
-        <span data-he>Team Haim היא קבוצת הרצים שאני בונה יחד עם כל מי שמתאמן איתי — תהליך אישי, שקוף ועקבי, שמלווה אתכם מהשיחה הראשונה ועד קו הסיום.</span>
-        <span data-en>Team Haim is the community of runners I build together with everyone who trains with me — a personal, transparent, consistent process from the first call to the finish line.</span>
+        <span data-he>Team Haim היא קבוצת הרצים שאני בונה יחד עם כל מי שמתאמן איתיתהליך אישי, שקוף ועקבי, שמלווה אתכם מהשיחה הראשונה ועד קו הסיום.</span>
+        <span data-en>Team Haim is the community of runners I build together with everyone who trains with mea personal, transparent, consistent process from the first call to the finish line.</span>
       </p>
       <div class="tm-steps">${steps}</div>
       <div class="tm-fit">
@@ -641,18 +686,12 @@ function buildPrograms() {
       dEn:'A fully personalized training plan, continuously updated based on your performance and data. Includes close support throughout the week, Strava tracking, and weekly feedback.',
       specs:[{kh:'עדכון תכנית',ke:'Plan updates',vh:'שבועי',ve:'Weekly'},{kh:'תקשורת',ke:'Communication',vh:'וואטסאפ שוטף',ve:'Ongoing WhatsApp'},{kh:'התחייבות',ke:'Commitment',vh:'חודשי',ve:'Month-to-month'}],
       pH:'צור קשר לפרטים', pE:'Contact for details', pnH:'מחיר אישי', pnE:'Individual pricing' },
-    { idx:'03', typeHe:'תוכנית ממוקדת', typeEn:'Focused block',
-      nHe:'הכנה לתחרות', nEn:'Race Preparation Block',
-      dHe:'תהליך ממוקד לקראת תחרות מטרה — בניית עומסים, חידוד קצב ומוכנות מנטלית ליום התחרות.',
-      dEn:'A focused block leading up to a target race — building load, sharpening pace, and mental readiness for race day.',
-      specs:[{kh:'משך',ke:'Duration',vh:'6–10 שבועות',ve:'6–10 weeks'},{kh:'מתאים ל',ke:'Best for',vh:'תחרות מטרה מוגדרת',ve:'A defined target race'}],
-      pH:'צור קשר לפרטים', pE:'Contact for details', pnH:'מחיר אישי', pnE:'Individual pricing' },
   ];
   const rows = P.map(w => {
     const specs = w.specs.map(s => `<div><p class="label wsr-sk muted"><span data-he>${s.kh}</span><span data-en>${s.ke}</span></p><p class="wsr-sv"><span data-he>${s.vh}</span><span data-en>${s.ve}</span></p></div>`).join('');
     return `<div class="ws-row">
       <div class="wsr-l">
-        <p class="label wsr-type muted">${w.idx} — <span data-he>${w.typeHe}</span><span data-en>${w.typeEn}</span></p>
+        <p class="label wsr-type muted">${w.idx}<span data-he>${w.typeHe}</span><span data-en>${w.typeEn}</span></p>
         <h2 class="wsr-name"><span data-he>${w.nHe}</span><span data-en>${w.nEn}</span></h2>
         <p class="wsr-desc"><span data-he>${w.dHe}</span><span data-en>${w.dEn}</span></p>
         <div class="wsr-specs label">${specs}</div>
@@ -687,7 +726,7 @@ function buildContact() {
       <div class="ct-grid">
         <div class="ct-l">
           <h1 class="ct-h1"><span data-he>יצירת קשר</span><span data-en>Contact</span></h1>
-          <p class="ct-sub"><span data-he>מוכן להתחיל? כתוב לי ישירות — אחזור אליך תוך יום עסקים.</span><span data-en>Ready to start? Reach out directly — I'll get back to you within a business day.</span></p>
+          <p class="ct-sub"><span data-he>מוכן להתחיל? כתוב לי ישירותאחזור אליך תוך יום עסקים.</span><span data-en>Ready to start? Reach out directlyI'll get back to you within a business day.</span></p>
           <div class="ct-chs label">
             <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%9F" target="_blank" rel="noopener" class="ct-ch">
               <span class="ct-ch-k"><span data-he>וואטסאפ</span><span data-en>WhatsApp</span></span>
@@ -699,7 +738,7 @@ function buildContact() {
             </a>
             <div class="ct-ch" style="cursor:default">
               <span class="ct-ch-k"><span data-he>ליווי</span><span data-en>Coaching</span></span>
-              <span class="ct-ch-v"><span data-he>אונליין — מכל מקום</span><span data-en>Online — from anywhere</span></span>
+              <span class="ct-ch-v"><span data-he>אונלייןמכל מקום</span><span data-en>Onlinefrom anywhere</span></span>
             </div>
           </div>
         </div>
@@ -719,10 +758,9 @@ function buildContact() {
             <div class="fg">
               <label class="label" for="cf-s"><span data-he>נושא</span><span data-en>Subject</span></label>
               <select id="cf-s" name="subject" required>
-                <option value="" disabled selected>—</option>
+                <option value="" disabled selected></option>
                 <option value="discovery"><span data-he>שיחת היכרות</span><span data-en>Discovery call</span></option>
                 <option value="monthly"><span data-he>ליווי אישי חודשי</span><span data-en>Monthly personal coaching</span></option>
-                <option value="race"><span data-he>הכנה לתחרות</span><span data-en>Race preparation</span></option>
                 <option value="other"><span data-he>אחר</span><span data-en>Other</span></option>
               </select>
             </div>
