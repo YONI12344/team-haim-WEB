@@ -1,502 +1,747 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>יוני חיים | מאמן ריצה אישי</title>
-<meta name="description" content="אימון ריצה אישי עם יוני חיים — אלוף ישראל ומאמן ריצה מוסמך. תוכנית מותאמת אישית, ליווי צמוד ותוצאות אמיתיות.">
-<meta name="theme-color" content="#0a1628">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta property="og:title" content="יוני חיים | מאמן ריצה אישי — Team Haim">
-<meta property="og:description" content="אימון ריצה אישי עם יוני חיים — אלוף ישראל ומאמן ריצה מוסמך.">
-<meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Heebo:wght@300;400;500;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Team Haim — יוני חיים, מאמן ריצה אישי</title>
+<meta name="description" content="Team Haim — ליווי אישי לרצים. יוני חיים, אלוף ישראל ומאמן ריצה, בונה תהליך אימון מדויק ומבוסס נתונים."/>
+<meta property="og:title" content="Team Haim — יוני חיים, מאמן ריצה אישי"/>
+<meta property="og:description" content="ליווי אישי לרצים שרוצים להתקדם באמת. תוכנית מותאמת, נתונים אמיתיים, ליווי צמוד."/>
+<meta property="og:type" content="website"/>
+<meta name="theme-color" content="#fcfbf9"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Spectral:ital,wght@0,200;0,300;0,400;1,300&family=Assistant:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --paper: #fcfbf9;
+  --ink:   #282623;
+  --char:  #16130e;
+  --line:  #d3caba;
+  --muted: #8a8174;
+  --ease:  cubic-bezier(.22,1,.36,1);
+}
+html[lang="he"] { --fs:'Assistant',system-ui,sans-serif; --fsr:'Frank Ruhl Libre',Georgia,serif; }
+html[lang="en"] { --fs:'Inter',system-ui,sans-serif;     --fsr:'Spectral',Georgia,serif; }
+
+*,::before,::after { box-sizing:border-box; margin:0; padding:0; border:0 solid var(--line); }
+html { line-height:1.5; -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body { background:var(--paper); color:var(--ink); font-family:var(--fs); -webkit-font-smoothing:antialiased; }
+img  { display:block; max-width:100%; }
+a    { color:inherit; text-decoration:none; }
+button { cursor:pointer; background:none; border:none; font:inherit; color:inherit; padding:0; }
+h1,h2,h3,h4,h5,h6 { font-size:inherit; font-weight:inherit; }
+ul,ol { list-style:none; }
+:focus-visible { outline:1.5px solid var(--ink); outline-offset:2px; }
+
+.label { font-family:var(--fs); font-size:11px; text-transform:uppercase; letter-spacing:.22em; }
+.serif { font-family:var(--fsr); }
+.muted { color:var(--muted); }
+
+.link-u { position:relative; display:inline-block; }
+.link-u::after {
+  content:''; position:absolute; bottom:0; left:0;
+  height:1px; width:100%;
+  transform-origin:right; transform:scaleX(0);
+  background:currentColor;
+  transition:transform .5s var(--ease);
+}
+.link-u:hover::after, .link-u.on::after { transform-origin:left; transform:scaleX(1); }
+
+.mx-page { max-width:1600px; margin-inline:auto; }
+.px { padding-inline:1.5rem; }
+@media(min-width:768px){ .px{ padding-inline:2.5rem; } }
+
+#app { transition:opacity .18s ease; min-height:100vh; }
+#app.fade { opacity:0; }
+
+/* ── HEADER ── */
+#hdr {
+  position:fixed; inset-inline:0; top:0; z-index:50;
+  background:rgba(252,251,249,.82);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.hdr-in {
+  max-width:1600px; margin-inline:auto;
+  padding-inline:1.5rem; padding-block:1.25rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+@media(min-width:768px){ .hdr-in{ padding-inline:2.5rem; padding-block:1.5rem; } }
+
+.logo { font-family:var(--fsr); font-size:clamp(1.2rem,2.4vw,1.75rem); font-weight:400; color:var(--ink); line-height:1; letter-spacing:.02em; }
+
+.nav-d { display:none; align-items:center; gap:2.25rem; }
+@media(min-width:768px){ .nav-d{ display:flex; } }
+.nav-d a { color:var(--muted); transition:color .4s; }
+.nav-d a:hover, .nav-d a.on { color:var(--ink); }
+
+.hdr-right { display:flex; align-items:center; gap:1.25rem; }
+.lang-btn  { color:var(--muted); transition:color .3s; }
+.lang-btn:hover { color:var(--ink); }
+
+.ham { display:flex; flex-direction:column; gap:5px; padding:4px; }
+.ham span { display:block; width:22px; height:1px; background:var(--ink); transition:transform .4s var(--ease),opacity .3s; }
+@media(min-width:768px){ .ham{ display:none; } }
+
+#mob-nav {
+  position:fixed; inset:0; z-index:40; background:var(--paper);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem;
+  transition:opacity .5s var(--ease); pointer-events:none; opacity:0;
+}
+#mob-nav.open { pointer-events:auto; opacity:1; }
+#mob-nav a { font-family:var(--fsr); font-size:1.875rem; font-weight:300; color:var(--ink); }
+
+/* ── FOOTER ── */
+footer { position:relative; z-index:10; border-top:1px solid var(--line); }
+.ftr-in {
+  max-width:1600px; margin-inline:auto;
+  padding-inline:1.5rem; padding-block:3rem;
+  display:flex; flex-direction:column; gap:2rem;
+}
+@media(min-width:768px){
+  .ftr-in{ flex-direction:row; align-items:flex-end; justify-content:space-between; padding-inline:2.5rem; padding-block:4rem; }
+}
+.ftr-tag { font-family:var(--fsr); font-size:1.125rem; font-weight:300; max-width:20rem; line-height:1.55; color:rgba(40,38,35,.65); }
+.ftr-links { display:flex; flex-direction:column; gap:.6rem; }
+@media(min-width:768px){ .ftr-links{ align-items:flex-end; } }
+.ftr-links a { color:var(--muted); transition:color .3s; }
+.ftr-links a:hover { color:var(--ink); }
+.ftr-copy { color:var(--muted); margin-top:.5rem; font-size:11px; }
+
+/* ── HOME ── */
+.home-hero {
+  min-height:100svh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding-inline:1.5rem; padding-block:7rem 5rem; gap:0;
+}
+.home-eyebrow { color:var(--muted); margin-bottom:1rem; }
+.home-tag {
+  font-family:var(--fsr); font-size:1.75rem; font-weight:300;
+  line-height:1.35; text-align:center; max-width:40rem;
+  color:var(--ink); margin-bottom:3rem;
+}
+@media(min-width:768px){ .home-tag{ font-size:2.4rem; } }
+
+.home-cats {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:1.25rem 1.5rem; margin-bottom:3.5rem; max-width:36rem;
+}
+@media(min-width:768px){ .home-cats{ flex-wrap:nowrap; max-width:none; gap:0 1.5rem; margin-bottom:4rem; } }
+.home-cats a { color:var(--muted); transition:color .3s; }
+.home-cats a:hover { color:var(--ink); }
+
+.feat {
+  position:relative; overflow:hidden;
+  background:rgba(211,202,186,.4);
+  cursor:pointer; display:block;
+  height:64vw; width:51.2vw;
+}
+@media(min-width:640px){ .feat{ height:58vw; width:46.4vw; } }
+@media(min-width:768px){ .feat{ height:58vh; width:46.4vh; } }
+
+.feat-slide { position:absolute; inset:0; opacity:0; transition:opacity 1s var(--ease); }
+.feat-slide.active { opacity:1; }
+.feat-slide img {
+  width:100%; height:100%; object-fit:cover; object-position:center 20%;
+  opacity:.88;
+  transition:transform 5200ms var(--ease), opacity 1400ms var(--ease);
+}
+.feat-slide.active img { transform:scale(1.05); }
+.feat:hover .feat-slide.active img { opacity:.96; }
+
+.feat-grad {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(to bottom,rgba(22,19,14,.08),transparent 45%,rgba(22,19,14,.6));
+  pointer-events:none;
+}
+.feat-info { position:absolute; inset-inline:0; bottom:0; z-index:2; padding-inline:1.5rem; padding-bottom:2rem; }
+@media(min-width:768px){ .feat-info{ padding-inline:2rem; padding-bottom:2.5rem; } }
+.feat-cat   { color:rgba(252,251,249,.75); transition:opacity .5s; }
+.feat-title { font-family:var(--fsr); font-size:1.25rem; font-weight:300; color:var(--paper); margin-top:.4rem; }
+
+.feat-dots { position:absolute; inset-inline:0; top:1.25rem; z-index:2; display:flex; justify-content:center; gap:.4rem; }
+.feat-dot { width:18px; height:1.5px; background:rgba(252,251,249,.35); transition:background .4s, width .4s var(--ease); }
+.feat-dot.active { background:rgba(252,251,249,.88); width:28px; }
+
+/* Why section */
+.hw-wrap { max-width:1600px; margin-inline:auto; padding-inline:1.5rem; padding-block:5rem; border-top:1px solid var(--line); }
+@media(min-width:768px){ .hw-wrap{ padding-inline:2.5rem; padding-block:7rem; } }
+.hw-head { max-width:36rem; margin-bottom:3.5rem; }
+.hw-h2 { font-family:var(--fsr); font-weight:300; font-size:2rem; line-height:1.25; margin-top:.9rem; }
+@media(min-width:768px){ .hw-h2{ font-size:2.75rem; } }
+.hw-grid { display:grid; grid-template-columns:1fr; gap:2.5rem; }
+@media(min-width:768px){ .hw-grid{ grid-template-columns:repeat(3,1fr); gap:3rem; } }
+.hw-item { padding-top:1.5rem; border-top:1px solid var(--line); }
+.hw-item-t { font-family:var(--fsr); font-size:1.25rem; font-weight:300; margin-bottom:.75rem; }
+.hw-item-d { font-size:.92rem; line-height:1.7; color:rgba(40,38,35,.7); }
+html[lang="he"] .hw-item-d { font-family:var(--fsr); font-size:.98rem; }
+.hw-cta { display:flex; justify-content:center; margin-top:4.5rem; }
+
+.btn-primary {
+  display:inline-flex; align-items:center; gap:.6rem;
+  background:var(--ink); color:var(--paper); border:1px solid var(--ink);
+  padding:1rem 2.25rem; transition:background .4s,color .4s;
+  font-family:var(--fs);
+}
+.btn-primary:hover { background:transparent; color:var(--ink); }
+
+/* ── ABOUT ── */
+.ab-page { padding-top:56px; }
+.ab-wrap { max-width:1600px; margin-inline:auto; padding-inline:1.5rem; padding-block:6rem; }
+@media(min-width:768px){ .ab-wrap{ padding-inline:2.5rem; padding-block:11rem 8rem; } }
+.ab-grid { display:grid; grid-template-columns:1fr; gap:3rem; }
+@media(min-width:768px){
+  .ab-grid{ grid-template-columns:repeat(12,1fr); gap:4rem; }
+  .ab-c5{ grid-column:span 5; }
+  .ab-c7{ grid-column:span 7; padding-inline-start:2rem; }
+}
+.ab-port { position:relative; overflow:hidden; background:rgba(211,202,186,.5); aspect-ratio:4/5; }
+.ab-port img { width:100%; height:100%; object-fit:cover; object-position:center 10%; }
+
+.ab-eye { color:var(--muted); }
+.ab-h1 { font-family:var(--fsr); font-weight:200; line-height:1.2; margin-top:1.25rem; font-size:2.5rem; max-width:36rem; }
+@media(min-width:768px){ .ab-h1{ font-size:3.4rem; } }
+.ab-body { margin-top:2.5rem; max-width:36rem; display:flex; flex-direction:column; gap:1.5rem; font-size:1rem; line-height:1.7; color:rgba(40,38,35,.75); }
+html[lang="he"] .ab-body { font-family:var(--fsr); font-size:1.05rem; }
+.ab-facts { margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:1.75rem 3rem; }
+.ab-fk { color:var(--muted); margin-bottom:.35rem; }
+.ab-fv { font-family:var(--fsr); font-size:1.1rem; font-weight:300; }
+.ab-cta { display:inline-flex; align-items:center; gap:.5rem; margin-top:2.25rem; font-family:var(--fsr); font-size:1.125rem; font-weight:300; }
+
+/* ── TEAM ── */
+.tm-page { padding-top:56px; }
+.tm-wrap { max-width:1600px; margin-inline:auto; padding-inline:1.5rem; padding-block:6rem; }
+@media(min-width:768px){ .tm-wrap{ padding-inline:2.5rem; padding-block:11rem 8rem; } }
+.tm-h1 { font-family:var(--fsr); font-weight:200; line-height:1; font-size:2.75rem; }
+@media(min-width:768px){ .tm-h1{ font-size:4rem; } }
+.tm-intro { margin-top:1.25rem; max-width:38rem; font-family:var(--fsr); font-size:1.1rem; font-weight:300; line-height:1.65; color:rgba(40,38,35,.7); }
+@media(min-width:768px){ .tm-intro{ font-size:1.25rem; } }
+
+.tm-steps { margin-top:4.5rem; border-top:1px solid var(--line); }
+.tm-step { padding-block:2rem; border-bottom:1px solid var(--line); display:grid; grid-template-columns:1fr; gap:.75rem; }
+@media(min-width:768px){ .tm-step{ grid-template-columns:5rem 1fr; gap:2rem; padding-block:2.25rem; align-items:baseline; } }
+.tm-step-n { font-family:var(--fsr); font-size:1rem; color:var(--muted); }
+.tm-step-t { font-family:var(--fsr); font-size:1.35rem; font-weight:300; margin-bottom:.5rem; }
+.tm-step-d { font-size:.92rem; line-height:1.7; color:rgba(40,38,35,.7); max-width:38rem; }
+html[lang="he"] .tm-step-d { font-family:var(--fsr); font-size:.98rem; }
+
+.tm-fit { margin-top:5rem; display:grid; grid-template-columns:1fr; gap:3rem; }
+@media(min-width:768px){ .tm-fit{ grid-template-columns:1fr 1fr; gap:5rem; } }
+.tm-fit-h { font-family:var(--fsr); font-size:1.4rem; font-weight:300; margin-bottom:1.25rem; }
+.tm-fit-l { display:flex; flex-direction:column; gap:.9rem; }
+.tm-fit-l li { font-size:.92rem; line-height:1.6; color:rgba(40,38,35,.72); padding-inline-end:1.1rem; position:relative; }
+html[lang="he"] .tm-fit-l li { font-family:var(--fsr); font-size:.98rem; }
+.tm-fit-l li::before { content:'—'; position:absolute; inset-inline-end:0; color:var(--muted); }
+
+.tm-close { margin-top:5.5rem; padding-top:3rem; border-top:1px solid var(--line); max-width:36rem; }
+.tm-close-t { font-family:var(--fsr); font-size:1.5rem; font-weight:300; line-height:1.45; margin-bottom:1.75rem; }
+
+/* ── PROGRAMS ── */
+.ws-page { padding-top:56px; }
+.ws-wrap { max-width:1600px; margin-inline:auto; padding-inline:1.5rem; padding-block:6rem; }
+@media(min-width:768px){ .ws-wrap{ padding-inline:2.5rem; padding-block:11rem 8rem; } }
+.ws-h1 { font-family:var(--fsr); font-weight:200; line-height:1; font-size:2.75rem; }
+@media(min-width:768px){ .ws-h1{ font-size:4rem; } }
+.ws-intro { margin-top:1.25rem; max-width:38rem; font-family:var(--fsr); font-size:1.1rem; font-weight:300; line-height:1.65; color:rgba(40,38,35,.7); }
+@media(min-width:768px){ .ws-intro{ font-size:1.25rem; } }
+.ws-list { margin-top:4rem; border-top:1px solid var(--line); }
+.ws-row { padding-block:2.5rem; border-bottom:1px solid var(--line); display:grid; grid-template-columns:1fr; gap:1.5rem; }
+@media(min-width:768px){
+  .ws-row{ grid-template-columns:repeat(12,1fr); gap:2rem 4rem; padding-block:3rem; align-items:start; }
+  .wsr-l{ grid-column:span 7; }
+  .wsr-r{ grid-column:span 5; display:flex; flex-direction:column; align-items:flex-start; gap:1rem; }
+}
+.wsr-type { color:var(--muted); margin-bottom:.5rem; }
+.wsr-name { font-family:var(--fsr); font-size:1.5rem; font-weight:300; line-height:1.2; margin-bottom:.85rem; }
+@media(min-width:768px){ .wsr-name{ font-size:1.85rem; } }
+.wsr-desc { font-size:.92rem; line-height:1.75; color:rgba(40,38,35,.7); max-width:36rem; }
+html[lang="he"] .wsr-desc { font-family:var(--fsr); font-size:.97rem; }
+.wsr-specs { display:flex; flex-wrap:wrap; gap:1rem 2.5rem; margin-top:1.5rem; }
+.wsr-sk { color:var(--muted); margin-bottom:.2rem; }
+.wsr-sv { font-size:.9rem; }
+.wsr-price { font-family:var(--fsr); font-size:2.25rem; font-weight:300; line-height:1; }
+.wsr-pnote { color:var(--muted); margin-top:.35rem; }
+.btn-ws { display:inline-block; margin-top:.75rem; border:1px solid var(--line); padding:.8rem 1.75rem; color:var(--ink); transition:background .4s,color .4s,border-color .4s; white-space:nowrap; }
+.btn-ws:hover { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+
+/* ── CONTACT ── */
+.ct-page { padding-top:56px; }
+.ct-wrap { max-width:1600px; margin-inline:auto; padding-inline:1.5rem; padding-block:6rem; }
+@media(min-width:768px){ .ct-wrap{ padding-inline:2.5rem; padding-block:11rem 8rem; } }
+.ct-grid { display:grid; grid-template-columns:1fr; gap:4rem; }
+@media(min-width:768px){
+  .ct-grid{ grid-template-columns:repeat(12,1fr); gap:4rem; }
+  .ct-l{ grid-column:span 4; }
+  .ct-r{ grid-column:span 8; }
+}
+.ct-h1 { font-family:var(--fsr); font-weight:200; line-height:1; font-size:2.75rem; margin-bottom:2rem; }
+@media(min-width:768px){ .ct-h1{ font-size:4rem; } }
+.ct-sub { font-family:var(--fsr); font-size:1.05rem; font-weight:300; color:rgba(40,38,35,.7); line-height:1.65; margin-bottom:2.5rem; max-width:22rem; }
+.ct-chs { display:flex; flex-direction:column; }
+.ct-ch { display:flex; align-items:flex-start; gap:.75rem; padding-block:1.25rem; border-bottom:1px solid var(--line); color:var(--ink); transition:opacity .3s; }
+.ct-ch:first-child { border-top:1px solid var(--line); }
+.ct-ch:hover { opacity:.6; }
+.ct-ch-k { color:var(--muted); min-width:5.5rem; flex-shrink:0; }
+.ct-ch-v { font-family:var(--fsr); font-size:1rem; font-weight:300; }
+.ct-fh { font-family:var(--fsr); font-size:1.5rem; font-weight:300; margin-bottom:2rem; color:rgba(40,38,35,.75); }
+.fg { margin-bottom:2rem; }
+.fg label { display:block; color:var(--muted); margin-bottom:.45rem; }
+.fg input,.fg textarea,.fg select {
+  width:100%; background:transparent; border-bottom:1px solid var(--line);
+  font-family:var(--fs); font-size:.95rem; color:var(--ink);
+  padding-block:.5rem; outline:none; -webkit-appearance:none; transition:border-color .3s;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus { border-bottom-color:var(--ink); }
+.fg input::placeholder,.fg textarea::placeholder { color:var(--line); }
+.fg textarea { resize:vertical; min-height:120px; }
+.fg-row { display:grid; grid-template-columns:1fr 1fr; gap:0 1.5rem; }
+@media(max-width:480px){ .fg-row{ grid-template-columns:1fr; } }
+.btn-send { display:inline-block; background:var(--ink); color:var(--paper); border:1px solid var(--ink); padding:1rem 2.5rem; transition:background .4s,color .4s; margin-top:.5rem; cursor:pointer; font-family:var(--fs); }
+.btn-send:hover { background:transparent; color:var(--ink); }
+
+/* ── WhatsApp FAB ── */
+.wa-fab {
+  position:fixed; bottom:1.5rem; left:1.5rem;
+  width:52px; height:52px; border-radius:50%;
+  background:#25D366;
+  display:flex; align-items:center; justify-content:center;
+  z-index:99; box-shadow:0 4px 18px rgba(37,211,102,.4);
+  transition:transform .2s, box-shadow .2s;
+}
+.wa-fab:hover { transform:scale(1.08) translateY(-2px); box-shadow:0 8px 26px rgba(37,211,102,.5); }
+</style>
 </head>
 <body>
 
-<!-- ── NAV ─────────────────────────────────── -->
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-logo">TEAM HAIM</div>
-    <ul class="nav-links">
-      <li><a href="#about">עליי</a></li>
-      <li><a href="#benefits">שירותים</a></li>
-      <li><a href="#method">תהליך</a></li>
-      <li><a href="#app">האפליקציה</a></li>
-      <li><a href="#contact">צור קשר</a></li>
-    </ul>
-    <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- ── MOBILE MENU ───────────────────────── -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" id="closeMenuBtn" aria-label="סגור">✕</button>
-  <div class="mobile-logo">TEAM HAIM</div>
-  <nav class="mobile-nav">
-    <a href="#about"    onclick="closeMenu()">עליי</a>
-    <a href="#benefits" onclick="closeMenu()">שירותים</a>
-    <a href="#method"   onclick="closeMenu()">תהליך</a>
-    <a href="#app"      onclick="closeMenu()">האפליקציה</a>
-    <a href="#contact"  onclick="closeMenu()">צור קשר</a>
-  </nav>
-  <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%9F" target="_blank" onclick="closeMenu()" class="mobile-cta">קבע שיחת היכרות</a>
+<div id="mob-nav" role="dialog" aria-modal="true">
+  <a href="#/" data-nav class="serif" style="font-size:1.75rem;font-weight:300">Team Haim</a>
+  <a href="#/about"    data-nav class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>המאמן</span><span data-en>The Coach</span></a>
+  <a href="#/team"     data-nav class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>הקבוצה</span><span data-en>The Team</span></a>
+  <a href="#/programs" data-nav class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>תוכניות</span><span data-en>Programs</span></a>
+  <a href="#/contact"  data-nav class="serif" style="font-size:1.5rem;font-weight:300"><span data-he>יצירת קשר</span><span data-en>Contact</span></a>
 </div>
 
-<!-- ── HERO ─────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-photo">
-    <img src="yoni-main.jpg" alt="יהונתן חיים">
-    <div class="hero-photo-overlay"></div>
-  </div>
-  <div class="hero-body">
-    <p class="hero-eyebrow">מאמן ריצה אישי</p>
-    <h1 class="hero-title">
-      רצים עם <span class="gold">הלב.</span><br>
-      חוגגים תחיים.
-    </h1>
-    <p class="hero-sub">
-      אני יוני חיים, מאמן ריצה שיאמן אותך אישית.<br class="br-desktop">
-      תוכנית שנבנית עליך בלבד. ליווי צמוד מהיום הראשון ועד הסיום.
-    </p>
-    <div class="hero-actions">
-      <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%99%D7%9B%D7%A8%D7%95%D7%AA" target="_blank" class="btn-primary">קבע שיחת היכרות חינמית</a>
-      <a href="#about" class="btn-ghost">קרא עליי</a>
+<header id="hdr">
+  <div class="hdr-in">
+    <a href="#/" class="logo link-u" style="display:flex;flex-direction:column;gap:.15rem">
+      <span>Team Haim</span>
+      <span style="font-family:var(--fs);font-size:.58rem;letter-spacing:.18em;color:var(--muted)"><span data-he>יוני חיים · מאמן ריצה אישי</span><span data-en>Yoni Haim · Personal Running Coach</span></span>
+    </a>
+    <nav class="nav-d" aria-label="Main">
+      <a href="#/about"    class="label link-u"><span data-he>המאמן</span><span data-en>The Coach</span></a>
+      <a href="#/team"     class="label link-u"><span data-he>הקבוצה</span><span data-en>The Team</span></a>
+      <a href="#/programs" class="label link-u"><span data-he>תוכניות</span><span data-en>Programs</span></a>
+      <a href="#/contact"  class="label link-u"><span data-he>יצירת קשר</span><span data-en>Contact</span></a>
+    </nav>
+    <div class="hdr-right">
+      <button class="lang-btn label" id="lang-btn" aria-label="Switch language">
+        <span data-he>EN</span><span data-en>עב</span>
+      </button>
+      <button class="ham" id="ham-btn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-</section>
+</header>
 
-<!-- ── STATS STRIP ────────────────────────── -->
-<div class="stats-strip">
-  <div class="stats-strip-inner">
-    <div class="strip-stat">
-      <div class="strip-num">8:19</div>
-      <div class="strip-lbl">שיא 3000מ׳</div>
-    </div>
-    <div class="strip-sep"></div>
-    <div class="strip-stat">
-      <div class="strip-num">8:51</div>
-      <div class="strip-lbl">שיא מכשולים</div>
-    </div>
-    <div class="strip-sep"></div>
-    <div class="strip-stat">
-      <div class="strip-num">2×</div>
-      <div class="strip-lbl">אלוף ישראל</div>
-    </div>
-    <div class="strip-sep"></div>
-    <div class="strip-stat">
-      <div class="strip-num">4</div>
-      <div class="strip-lbl">שנות אימון בארה"ב</div>
-    </div>
-  </div>
-</div>
+<div id="app"></div>
 
-<!-- ── ABOUT ─────────────────────────────────── -->
-<section class="section white-section" id="about">
-  <div class="container">
-    <div class="about-grid">
-
-      <div class="about-text">
-        <div class="eyebrow">קצת עליי</div>
-        <h2 class="section-title">יהונתן חיים<br><span class="gold">Yoni Haim</span></h2>
-
-        <div class="about-creds">
-          <span>אלוף ישראל פעמיים</span>
-          <span class="cred-dot"></span>
-          <span>נבחרת ישראל</span>
-          <span class="cred-dot"></span>
-          <span>מאמן ריצה מוסמך</span>
-          <span class="cred-dot"></span>
-          <span>הנדסה אזרחית, GWU</span>
-        </div>
-
-        <p class="body-text">
-          נעים להכיר, אני יהונתן חיים (25). חבר נבחרת ישראל ואלוף ישראל פעמיים בריצת 3000 מטר מכשולים. ייצגתי את ישראל באליפויות אירופה ועולם.
-        </p>
-        <p class="body-text">
-          את הניסיון שלי בניתי משני צדי המתרס. כספורטאי וכמאמן. במהלך שירותי הצבאי שירתי כמדריך אימון גופני ביחידה מובחרת, עם תפקיד מפתח בהכנה ליום סיירות ולמיוני יחידות עלית.
-        </p>
-        <p class="body-text">
-          בארבע השנים האחרונות התחרתי והתאמנתי בארצות הברית לצד המאמנים והאתלטים המובילים בעולם. כמאמן ריצה מוסמך, המטרה שלי היא להנגיש את הידע, הכלים והניסיון שצברתי ברמות הגבוהות ביותר לרצים בכל הרמות.
-        </p>
-        <div class="pb-tiles">
-          <div class="pb-tile">
-            <div class="pb-num">8:19</div>
-            <div class="pb-lbl">3000 מ׳</div>
-          </div>
-          <div class="pb-tile">
-            <div class="pb-num">8:51</div>
-            <div class="pb-lbl">3000 מ׳ מכשולים</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-photo-col">
-        <div class="about-photo-card">
-          <img src="yoni-last.jpeg" alt="יוני חיים מתאמן בקניה">
-          <div class="about-caption">אימון מסלול, Lornah Kiplagat Academy · קניה</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── BENEFITS ───────────────────────────────── -->
-<section class="section cream-section" id="benefits">
-  <div class="container">
-    <div class="eyebrow">מה כלול בתוכנית</div>
-    <h2 class="section-title">מה אתה <span class="gold">מקבל.</span></h2>
-    <p class="section-sub">מעטפת מקצועית מלאה. ליווי אמיתי מהאבחון הראשוני ועד קו הסיום.</p>
-
-    <div class="benefit-list">
-
-      <div class="bl-item">
-        <span class="bl-num">01</span>
-        <div class="bl-content">
-          <div class="bl-title">אבחון מעמיק ומטרה ברורה</div>
-          <div class="bl-desc">שיחת היכרות שמבינה לעומק את רמתך, היסטוריית האימונים שלך והמטרה שהצבת לעצמך.</div>
-        </div>
-      </div>
-
-      <div class="bl-item">
-        <span class="bl-num">02</span>
-        <div class="bl-content">
-          <div class="bl-title">תוכנית שנבנית עליך בלבד</div>
-          <div class="bl-desc">כל שבוע מתוכנן לפי הגוף שלך, הזמן שיש לך והמטרה שהצבת.</div>
-        </div>
-      </div>
-
-      <div class="bl-item">
-        <span class="bl-num">03</span>
-        <div class="bl-content">
-          <div class="bl-title">הנתונים שלך מגיעים אליי אוטומטית</div>
-          <div class="bl-desc">סנכרון ישיר עם Garmin ו-Strava. אני רואה בדיוק איך כל אימון הלך.</div>
-        </div>
-      </div>
-
-      <div class="bl-item">
-        <span class="bl-num">04</span>
-        <div class="bl-content">
-          <div class="bl-title">משוב שבועי שמקדם אותך</div>
-          <div class="bl-desc">ניתוח שבועי של הביצועים עם התאמות מיידיות. הכושר שלך ממשיך לעלות.</div>
-        </div>
-      </div>
-
-      <div class="bl-item">
-        <span class="bl-num">05</span>
-        <div class="bl-content">
-          <div class="bl-title">כוח שהופך אותך לרץ טוב יותר</div>
-          <div class="bl-desc">תוכנית כוח ייעודית לרצים. מחזקת את הגוף, מונעת פציעות ומוסיפה קצב.</div>
-        </div>
-      </div>
-
-      <div class="bl-item">
-        <span class="bl-num">06</span>
-        <div class="bl-content">
-          <div class="bl-title">זמין לך. תמיד.</div>
-          <div class="bl-desc">שאלות, עדכונים, שינויים בתוכנית? מענה מהיר דרך האפליקציה ובוואטסאפ.</div>
-        </div>
-      </div>
-
-      <div class="bl-item">
-        <span class="bl-num">07</span>
-        <div class="bl-content">
-          <div class="bl-title">הגעה מדויקת לקו הזינוק</div>
-          <div class="bl-desc">פירוק עומסים חכם ואסטרטגיית קצב שמביאה אותך לתחרות בשיא הכושר שלך.</div>
-        </div>
-      </div>
-
-      <div class="bl-item">
-        <span class="bl-num">08</span>
-        <div class="bl-content">
-          <div class="bl-title">ראייה שנתית לאורך כל העונה</div>
-          <div class="bl-desc">כל מרוץ וכל שלב הכנה מתוכנן מראש. שיאי הכושר שלך מגיעים בדיוק בזמן הנכון.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── METHOD ─────────────────────────────────── -->
-<section class="section white-section" id="method">
-  <div class="container">
-    <div class="method-grid">
-
-      <div class="method-steps">
-        <div class="eyebrow">איך התהליך נראה</div>
-        <h2 class="section-title">ארבעה שלבים.<br><span class="gold">תוצאה אחת.</span></h2>
-
-        <div class="steps">
-
-          <div class="step-item">
-            <div class="step-left">
-              <div class="step-circle">01</div>
-              <div class="step-line"></div>
-            </div>
-            <div class="step-body">
-              <div class="step-title">שיחת היכרות חינמית</div>
-              <div class="step-desc">מבינים איפה אתה עומד, מה המטרות שלך ואיך הדרך הנכונה עבורך נראית.</div>
-            </div>
-          </div>
-
-          <div class="step-item">
-            <div class="step-left">
-              <div class="step-circle">02</div>
-              <div class="step-line"></div>
-            </div>
-            <div class="step-body">
-              <div class="step-title">תוכנית שבנויה עליך</div>
-              <div class="step-desc">לפי הגוף שלך, הזמן שלך והמטרה שלך. נכנסת לאפליקציה ומתחיל לרוץ.</div>
-            </div>
-          </div>
-
-          <div class="step-item">
-            <div class="step-left">
-              <div class="step-circle">03</div>
-              <div class="step-line"></div>
-            </div>
-            <div class="step-body">
-              <div class="step-title">אימון חכם ועקבי</div>
-              <div class="step-desc">מעקב שבועי עם נתוני Garmin ו-Strava. התוכנית מתאימה את עצמה לך בזמן אמת.</div>
-            </div>
-          </div>
-
-          <div class="step-item last">
-            <div class="step-left">
-              <div class="step-circle">04</div>
-            </div>
-            <div class="step-body">
-              <div class="step-title">הגעה לשיא</div>
-              <div class="step-desc">הכנה מדויקת לתחרות, יום הסיירות או כל יעד שהצבת. עקביות ועבודה נכונה.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="method-photo-col">
-        <img src="race-1.jpg" alt="יוני חיים מתחרה" class="method-photo">
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── APP PROMO ─────────────────────────────── -->
-<section class="app-section" id="app">
-  <div class="container">
-
-    <div class="app-header">
-      <div class="eyebrow light">כלי האימון שלי</div>
-      <h2 class="section-title light">כשמתאמן איתי<br><span class="gold">גם תקבל גישה לאפליקציה האישית שלי.</span></h2>
-      <p class="app-intro-desc">תוכנית אימונים אישית, נתוני Strava, משוב ישיר ממני ועדכונים בזמן אמת. הכל במקום אחד.</p>
-    </div>
-
-    <div class="two-phones">
-
-      <!-- Phone 1: Home screen -->
-      <div class="phone-mockup-wrap">
-        <div class="phone-frame-v2">
-          <div class="phone-notch"></div>
-          <div class="phone-screen-white">
-
-            <div class="pws-topbar">
-              <div class="pws-avatar-circle">YH</div>
-              <div class="pws-greeting">
-                <div class="pws-date-small">23 Jun</div>
-                <div class="pws-hello">שלום, Yehonatan</div>
-              </div>
-              <div class="pws-th-logo">TH</div>
-            </div>
-
-            <div class="pws-workout-card pws-workout-card-margin">
-              <span class="pws-type-badge">פרטלק</span>
-              <div class="pws-wname">פרטלק קנייתי 2|1|1|1</div>
-              <div class="pws-wmeta">15 ק"מ · 50 דק'</div>
-              <div class="pws-open-btn">פתח אימון</div>
-            </div>
-
-            <div class="pws-week-section">
-              <div class="pws-week-title">השבוע שלך</div>
-              <div class="pws-week-sub">1 מתוך 7 אימונים הושלמו</div>
-              <div class="pws-stats-row">
-                <div class="pws-stat">
-                  <div class="pws-stat-n">1</div>
-                  <div class="pws-stat-l">אימונים</div>
-                </div>
-                <div class="pws-stat">
-                  <div class="pws-stat-n">5.0</div>
-                  <div class="pws-stat-l">מאמץ ממוצע</div>
-                </div>
-                <div class="pws-stat">
-                  <div class="pws-stat-n">19</div>
-                  <div class="pws-stat-l">ק"מ בוצע</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="pws-coach-note">
-              <div class="pws-note-lbl">הערת המאמן</div>
-              <div class="pws-note-text">אני מרגיש גאווה רבה בהתקדמותך. המשך לעבוד קשה ולהאמין בעצמך.</div>
-            </div>
-
-            <div class="pws-bottomnav">
-              <div class="pws-nav-item">פרופיל</div>
-              <div class="pws-nav-item">סטטוס</div>
-              <div class="pws-nav-item">לוח</div>
-              <div class="pws-nav-item active">בית</div>
-            </div>
-
-          </div>
-        </div>
-        <div class="phone-label">דף הבית</div>
-      </div>
-
-      <!-- Phone 2: Planner screen -->
-      <div class="phone-mockup-wrap phone-second">
-        <div class="phone-frame-v2">
-          <div class="phone-notch"></div>
-          <div class="phone-screen-white">
-
-            <div class="pws-plan-header">
-              <span class="pws-arr">‹</span>
-              <div class="pws-plan-date">יום שלישי, 23 ביוני 2026</div>
-              <span class="pws-arr">›</span>
-            </div>
-
-            <div class="pws-filters">
-              <span class="pws-filter-strava">Strava</span>
-              <span class="pws-filter">חודש</span>
-              <span class="pws-filter">שבוע</span>
-              <span class="pws-filter active">יום</span>
-            </div>
-
-            <div class="pws-today-lbl">היום</div>
-
-            <div class="pws-workout-card pws-workout-card-margin">
-              <span class="pws-type-badge">פרטלק</span>
-              <div class="pws-wname">פרטלק קנייתי 2|1|1|1</div>
-              <div class="pws-gray-pills">
-                <span class="pws-gray-pill">50 min</span>
-                <span class="pws-gray-pill">15 km</span>
-              </div>
-              <div class="pws-details-btn">פרטי אימון ›</div>
-            </div>
-
-            <div class="pws-season-row">
-              <div class="pws-season-lbl">שלב העונה</div>
-              <div class="pws-season-val">
-                <span class="pws-green-pill">בסיס</span>
-                <span class="pws-season-week">שבוע 5/19</span>
-              </div>
-            </div>
-
-            <div class="pws-km-section">
-              <div class="pws-km-lbl">ק"מ השבוע</div>
-              <div class="pws-km-num">19</div>
-              <div class="pws-progress-bar">
-                <div class="pws-progress-fill" style="width:21%"></div>
-              </div>
-              <div class="pws-km-range">19 km / 90-121 km</div>
-            </div>
-
-            <div class="pws-bottomnav">
-              <div class="pws-nav-item">פרופיל</div>
-              <div class="pws-nav-item">סטטוס</div>
-              <div class="pws-nav-item active">לוח</div>
-              <div class="pws-nav-item">בית</div>
-            </div>
-
-          </div>
-        </div>
-        <div class="phone-label">לוח אימונים</div>
-      </div>
-
-    </div>
-
-    <!-- 3 clean text features -->
-    <div class="app-features-clean">
-      <div class="afc-item">
-        <div class="afc-num">01</div>
-        <div class="afc-title">תוכנית אישית</div>
-        <div class="afc-desc">כל האימונים מסודרים לפי ימים, עם הסברים מלאים לכל אחד.</div>
-      </div>
-      <div class="afc-item">
-        <div class="afc-num">02</div>
-        <div class="afc-title">סנכרון Strava אוטומטי</div>
-        <div class="afc-desc">הנתונים שלך מגיעים אליי אוטומטית אחרי כל ריצה.</div>
-      </div>
-      <div class="afc-item">
-        <div class="afc-num">03</div>
-        <div class="afc-title">משוב ישיר מהמאמן</div>
-        <div class="afc-desc">פידבק אישי לאפליקציה שלך אחרי כל אימון, עם עדכונים בזמן אמת.</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── CTA ─────────────────────────────────────── -->
-<section class="cta-section" id="coaching">
-  <div class="container">
-    <div class="cta-inner">
-      <div class="eyebrow light">מוכן להתחיל?</div>
-      <h2 class="cta-title">מוכן לרוץ<br><span class="gold">מהר יותר?</span></h2>
-      <p class="cta-body">שלח לי הודעה ונתחיל בשיחת היכרות קצרה וחינמית. אאמן אותך אישית. תוכנית שנבנית עליך בלבד, ליווי צמוד, ותוצאות אמיתיות.</p>
-      <div class="cta-tags">
-        <span class="cta-tag">שיחת היכרות חינמית</span>
-        <span class="cta-tag">תוכנית אישית</span>
-        <span class="cta-tag">סנכרון Garmin ו-Strava</span>
-        <span class="cta-tag">ליווי שבועי</span>
-        <span class="cta-tag">אפליקציה ייעודית</span>
-        <span class="cta-tag">הכנה לתחרויות</span>
-      </div>
-      <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%99%D7%9B%D7%A8%D7%95%D7%AA" target="_blank" class="btn-primary">קבע שיחת היכרות עכשיו</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT ────────────────────────────────── -->
-<section class="section white-section" id="contact">
-  <div class="container">
-    <div class="eyebrow">צור קשר</div>
-    <h2 class="section-title">מתחילים <span class="gold">עכשיו.</span></h2>
-    <p class="section-sub">שלח לי הודעה ונקבע שיחת היכרות קצרה. ללא התחייבות. ללא עלות.</p>
-    <div class="contact-clean">
-      <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%9F" target="_blank" class="contact-clean-item">
-        <span class="cci-label">WhatsApp</span>
-        <span class="cci-value">055-881-4177</span>
-        <span class="cci-arrow">↗</span>
-      </a>
-      <div class="cci-divider"></div>
-      <a href="mailto:info.teamhaim@gmail.com" class="contact-clean-item">
-        <span class="cci-label">מייל</span>
-        <span class="cci-value">info.teamhaim@gmail.com</span>
-        <span class="cci-arrow">↗</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ─────────────────────────────────── -->
-<footer class="footer">
-  <div class="footer-logo">TEAM HAIM</div>
-  <p class="footer-tag">רצים עם הלב. חוגגים תחיים.</p>
-  <p class="footer-copy">© 2026 Team Haim · יהונתן חיים · מאמן ריצה מוסמך</p>
-</footer>
-
-<!-- ── FLOATING WA ────────────────────────────── -->
-<a class="wa-fab" href="https://wa.me/972558814177" target="_blank" rel="noopener" aria-label="צור קשר בוואטסאפ">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.121 1.523 5.858L0 24l6.335-1.51A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.014-1.374l-.36-.214-3.76.896.953-3.658-.236-.376A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.429 0 9.818 4.388 9.818 9.818 0 5.429-4.389 9.818-9.818 9.818zm5.397-7.311c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-  </svg>
+<!-- WhatsApp floating button -->
+<a class="wa-fab" href="https://wa.me/972558814177" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.121 1.523 5.858L0 24l6.335-1.51A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.014-1.374l-.36-.214-3.76.896.953-3.658-.236-.376A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.429 0 9.818 4.388 9.818 9.818 0 5.429-4.389 9.818-9.818 9.818zm5.397-7.311c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
 </a>
 
-<script src="script.js"></script>
+<script>
+const HL = document.documentElement;
+let lang = localStorage.getItem('th-lang') || 'he';
+
+function applyLang(l) {
+  lang = l;
+  HL.setAttribute('lang', l);
+  HL.setAttribute('dir', l === 'he' ? 'rtl' : 'ltr');
+  localStorage.setItem('th-lang', l);
+  document.querySelectorAll('[data-he]').forEach(el => el.style.display = l==='he' ? '' : 'none');
+  document.querySelectorAll('[data-en]').forEach(el => el.style.display = l==='en' ? '' : 'none');
+}
+function T(he, en) { return lang === 'he' ? he : en; }
+
+document.getElementById('lang-btn').addEventListener('click', () => { applyLang(lang==='he'?'en':'he'); route(); });
+
+const mobNav = document.getElementById('mob-nav');
+const hamBtn = document.getElementById('ham-btn');
+function closeMob() { mobNav.classList.remove('open'); hamBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+hamBtn.addEventListener('click', () => {
+  const o = mobNav.classList.toggle('open');
+  hamBtn.setAttribute('aria-expanded', String(o));
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+document.querySelectorAll('[data-nav]').forEach(a => a.addEventListener('click', closeMob));
+
+const app = document.getElementById('app');
+
+function route() {
+  const hash = location.hash.replace('#','') || '/';
+  const page = hash.split('/').filter(Boolean)[0] || '';
+  document.querySelectorAll('.nav-d a').forEach(a => {
+    const h = a.getAttribute('href').replace('#/','');
+    a.classList.toggle('on', h === page);
+  });
+  let html;
+  if (!page)                html = buildHome();
+  else if (page==='about')   html = buildAbout();
+  else if (page==='team')    html = buildTeam();
+  else if (page==='programs')html = buildPrograms();
+  else if (page==='contact') html = buildContact();
+  else html = buildHome();
+  app.classList.add('fade');
+  setTimeout(() => {
+    app.innerHTML = html;
+    app.classList.remove('fade');
+    window.scrollTo(0,0);
+    applyLang(lang);
+    bindEvents();
+  }, 180);
+}
+
+function bindEvents() {
+  if (_slideTimer) { clearInterval(_slideTimer); _slideTimer = null; }
+  const f = app.querySelector('form[data-cf]');
+  if (f) f.addEventListener('submit', e => { e.preventDefault(); alert(T('תודה! אחזור אליך בהקדם.','Thanks! I\'ll be in touch soon.')); f.reset(); });
+  if (document.getElementById('feat-card')) startSlideshow();
+}
+window.addEventListener('hashchange', route);
+
+function arrR() { return `<svg width="20" height="8" viewBox="0 0 20 8" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 4h18M14 1l4 3-4 3"/></svg>`; }
+
+function footer() {
+  return `<footer>
+    <div class="ftr-in">
+      <p class="ftr-tag">
+        <span data-he>רצים עם הלב. חוגגים את החיים.</span>
+        <span data-en>Run with heart. Celebrate life.</span>
+      </p>
+      <div class="ftr-links label">
+        <a href="#/about"    class="link-u"><span data-he>המאמן</span><span data-en>The Coach</span></a>
+        <a href="#/team"     class="link-u"><span data-he>הקבוצה</span><span data-en>The Team</span></a>
+        <a href="#/programs" class="link-u"><span data-he>תוכניות</span><span data-en>Programs</span></a>
+        <a href="#/contact"  class="link-u"><span data-he>יצירת קשר</span><span data-en>Contact</span></a>
+        <p class="ftr-copy">© ${new Date().getFullYear()} Team Haim · <span data-he>יהונתן חיים · מאמן ריצה מוסמך</span><span data-en>Yoni Haim · Certified Running Coach</span></p>
+      </div>
+    </div>
+  </footer>`;
+}
+
+/* ── SLIDESHOW ── */
+let _slideTimer = null;
+let _slideIdx = 0;
+
+const SLIDES = [
+  { img:'yoni-main.jpg',    catHe:'אימון',  catEn:'Training', tHe:'אימונים ברמה הגבוהה ביותר',       tEn:'Training at the highest level' },
+  { img:'race-1.jpg',       catHe:'תחרות',  catEn:'Race',     tHe:'ריצה תחרותית — NCAA Division I',   tEn:'Competing at NCAA Division I' },
+  { img:'yoni-train.jpeg',  catHe:'ליווי',  catEn:'Coaching', tHe:'ליווי אישי לאורך כל התהליך',       tEn:'Personal guidance, every step' },
+];
+
+function buildHome() {
+  const cats = [
+    { he:'ריצה תחרותית', en:'Competitive running', href:'#/team' },
+    { he:'אימון אישי אונליין', en:'Personal online coaching', href:'#/programs' },
+    { he:'הכנה לתחרויות', en:'Race preparation', href:'#/programs' },
+  ].map(c => `<a href="${c.href}" class="label link-u"><span data-he>${c.he}</span><span data-en>${c.en}</span></a>`).join('');
+
+  const slides = SLIDES.map((s,i) => `
+    <div class="feat-slide${i===0?' active':''}" data-i="${i}">
+      <img src="${s.img}" alt="${s.catHe}"/>
+    </div>`).join('');
+  const dots = SLIDES.map((_,i) => `<div class="feat-dot${i===0?' active':''}"></div>`).join('');
+
+  return `<main>
+    <section class="home-hero">
+      <p class="label home-eyebrow"><span data-he>ריצה תחרותית · אימון אישי אונליין</span><span data-en>Competitive running · Personal online coaching</span></p>
+      <p class="home-tag">
+        <span data-he>אימון ריצה מדויק ואישי — לרצים שרוצים להתקדם באמת, לא רק להתאמן קשה.</span>
+        <span data-en>Precise, personal running coaching — for runners who want real progress, not just hard training.</span>
+      </p>
+      <nav class="home-cats label">${cats}</nav>
+      <div class="feat" id="feat-card">
+        ${slides}
+        <div class="feat-grad"></div>
+        <div class="feat-dots">${dots}</div>
+        <div class="feat-info">
+          <p class="label feat-cat" id="feat-cat"><span data-he>${SLIDES[0].catHe}</span><span data-en>${SLIDES[0].catEn}</span></p>
+          <p class="feat-title" id="feat-title"><span data-he>${SLIDES[0].tHe}</span><span data-en>${SLIDES[0].tEn}</span></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="hw-wrap">
+      <div class="hw-head">
+        <p class="label muted"><span data-he>למה Team Haim</span><span data-en>Why Team Haim</span></p>
+        <h2 class="hw-h2"><span data-he>לא עוד תכנית גנרית שהורדתם מהאינטרנט.</span><span data-en>Not another generic plan pulled off the internet.</span></h2>
+      </div>
+      <div class="hw-grid">
+        <div class="hw-item">
+          <p class="hw-item-t"><span data-he>מבוסס נתונים</span><span data-en>Data-driven</span></p>
+          <p class="hw-item-d"><span data-he>מעקב דופק, עומסי אימון ותגובה פיזיולוגית — כדי להבין איך הגוף שלך מגיב באמת, לא רק איך הוא מרגיש.</span><span data-en>Heart-rate tracking, training load, and physiological response — to understand how your body actually reacts, not just how it feels.</span></p>
+        </div>
+        <div class="hw-item">
+          <p class="hw-item-t"><span data-he>מותאם אישית</span><span data-en>Personalized</span></p>
+          <p class="hw-item-d"><span data-he>כל תכנית נבנית לפי הרץ הספציפי, לא לפי תבנית קבועה — ומתעדכנת כל הזמן לפי הביצוע בפועל.</span><span data-en>Every plan is built around the individual runner, not a fixed template — and adjusts continuously based on real performance.</span></p>
+        </div>
+        <div class="hw-item">
+          <p class="hw-item-t"><span data-he>ליווי אמיתי</span><span data-en>Real accompaniment</span></p>
+          <p class="hw-item-d"><span data-he>אני מלווה את התהליך לאורך השבוע, לא רק שולח אימון ונעלם. שאלות, התאמות, הכנה לתחרות — לאורך כל הדרך.</span><span data-en>I stay with you through the week, not just send a workout and disappear. Questions, adjustments, race prep — all along the way.</span></p>
+        </div>
+      </div>
+      <div class="hw-cta">
+        <a href="#/contact" class="btn-primary label"><span data-he>אני רוצה להצטרף</span><span data-en>I want to join</span>${arrR()}</a>
+      </div>
+    </div>
+  </main>${footer()}`;
+}
+
+function startSlideshow() {
+  if (_slideTimer) clearInterval(_slideTimer);
+  _slideIdx = 0;
+  _slideTimer = setInterval(advanceSlide, 4000);
+}
+function advanceSlide() {
+  const slides = document.querySelectorAll('.feat-slide');
+  const dots   = document.querySelectorAll('.feat-dot');
+  const catEl  = document.getElementById('feat-cat');
+  const ttlEl  = document.getElementById('feat-title');
+  if (!slides.length) return;
+  slides[_slideIdx].classList.remove('active');
+  dots[_slideIdx].classList.remove('active');
+  _slideIdx = (_slideIdx + 1) % SLIDES.length;
+  slides[_slideIdx].classList.add('active');
+  dots[_slideIdx].classList.add('active');
+  const s = SLIDES[_slideIdx];
+  if (catEl) catEl.innerHTML = `<span data-he>${s.catHe}</span><span data-en>${s.catEn}</span>`;
+  if (ttlEl) ttlEl.innerHTML = `<span data-he>${s.tHe}</span><span data-en>${s.tEn}</span>`;
+  applyLang(lang);
+}
+
+/* ── ABOUT ── */
+function buildAbout() {
+  return `<div class="ab-page">
+    <div class="ab-wrap">
+      <div class="ab-grid">
+        <div class="ab-c5">
+          <div class="ab-port">
+            <img src="yoni-last.jpeg" alt="יוני חיים"/>
+          </div>
+        </div>
+        <div class="ab-c7">
+          <p class="label ab-eye"><span data-he>המאמן</span><span data-en>The Coach</span></p>
+          <h1 class="ab-h1">
+            <span data-he>אני ניגש לריצה מתוך חשיבה אנליטית וספורטיבית — גם יחד.</span>
+            <span data-en>I approach running through analytical thinking and athletic instinct — together.</span>
+          </h1>
+          <div class="ab-body">
+            <p><span data-he>אני יהונתן (יוני) חיים, רץ תחרותי ומאמן ריצה. אלוף ישראל פעמיים בריצת 3000 מטר מכשולים, וחבר נבחרת ישראל באליפויות אירופה ועולם. בארבע השנים האחרונות התחרתי והתאמנתי בארצות הברית ברמת NCAA Division I.</span>
+               <span data-en>I'm Yoni Haim, a competitive runner and running coach. I'm a two-time Israeli champion in the 3000m steeplechase and a member of the Israeli national team at European and World Championships. For the past four years I've competed and trained in the US at NCAA Division I level.</span></p>
+            <p><span data-he>במקביל אני לומד הנדסה אזרחית ב-George Washington University, ומשלב חשיבה אנליטית עם ניסיון אמיתי מהמסלול כדי לבנות שיטת אימון שאני עובד איתה גם בעצמי וגם עם כל רץ שאני מלווה.</span>
+               <span data-en>I also study civil engineering at George Washington University, combining an analytical mindset with real track experience to build a training method I use both for myself and with every runner I coach.</span></p>
+            <p><span data-he>אני רואה הרבה רצים שעובדים קשה אך לא תמיד מתקדמים — לא כי הם לא מספיק טובים, אלא כי משהו בתהליך לא מדויק מספיק. המטרה שלי היא לתת לכל רץ בדיוק את מה שהוא צריך, כדי שהעבודה הקשה שלו תביא לתוצאות אמיתיות.</span>
+               <span data-en>I see many runners who work hard but don't always progress — not because they're not good enough, but because something in the process isn't precise enough. My goal is to give each runner exactly what they need, so their hard work produces real results.</span></p>
+          </div>
+          <div class="ab-facts">
+            <div><p class="label ab-fk"><span data-he>הישגים</span><span data-en>Achievements</span></p><p class="ab-fv"><span data-he>אלוף ישראל פעמיים · נבחרת ישראל</span><span data-en>2× Israeli champion · National team</span></p></div>
+            <div><p class="label ab-fk"><span data-he>ליגה</span><span data-en>League</span></p><p class="ab-fv">NCAA Division I</p></div>
+            <div><p class="label ab-fk"><span data-he>לימודים</span><span data-en>Studies</span></p><p class="ab-fv"><span data-he>הנדסה אזרחית, GWU</span><span data-en>Civil Engineering, GWU</span></p></div>
+          </div>
+          <a href="#/team" class="ab-cta link-u">
+            <span data-he>איך זה עובד בפועל</span><span data-en>How it works in practice</span>${arrR()}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>${footer()}`;
+}
+
+/* ── TEAM ── */
+function buildTeam() {
+  const steps = [
+    { n:'01', tHe:'שיחת היכרות', tEn:'Discovery call',
+      dHe:'מכירים, מבינים איפה אתה נמצא, מה המטרות שלך ואיך אתה מתאמן היום — ובודקים יחד שיש התאמה.',
+      dEn:'We get to know each other, understand where you are, your goals, and check together that it\'s a fit.' },
+    { n:'02', tHe:'בניית תכנית אישית', tEn:'Building your personal plan',
+      dHe:'תכנית אימון שנבנית סביבך — הרקע שלך, הזמינות שלך, והמטרה שלך. לא תבנית קבועה.',
+      dEn:'A training plan built around you — your background, your availability, your goal. Never a fixed template.' },
+    { n:'03', tHe:'ליווי שוטף לפי נתונים', tEn:'Ongoing, data-based guidance',
+      dHe:'התכנית מתעדכנת באופן שוטף לפי הביצוע בפועל, עומסי האימון ותגובת הגוף — לאורך כל השבוע.',
+      dEn:'The plan is updated continuously based on real performance and training load — throughout the week.' },
+    { n:'04', tHe:'הכנה לתחרות', tEn:'Race preparation',
+      dHe:'כשיש תחרות מטרה — בונים שלב מדויק שמכין אותך פיזית ומנטלית ליום עצמו.',
+      dEn:'When there\'s a target race, we build a precise block that prepares you physically and mentally for race day.' },
+  ].map(s => `<div class="tm-step">
+      <p class="tm-step-n">${s.n}</p>
+      <div>
+        <p class="tm-step-t"><span data-he>${s.tHe}</span><span data-en>${s.tEn}</span></p>
+        <p class="tm-step-d"><span data-he>${s.dHe}</span><span data-en>${s.dEn}</span></p>
+      </div>
+    </div>`).join('');
+
+  const fitFor = [
+    ['רוצה להשתפר בריצה באמת, לא רק לרוץ עוד קילומטרים','Wants to genuinely improve, not just log more kilometers'],
+    ['רוצה להבין את האימונים שלו לעומק','Wants to deeply understand their own training'],
+    ['רוצה מסגרת ברורה, עקבית ומדויקת','Wants a clear, consistent, precise framework'],
+    ['מוכן לעבוד בעקביות לאורך זמן','Is ready to work consistently over time'],
+  ].map(([he,en]) => `<li><span data-he>${he}</span><span data-en>${en}</span></li>`).join('');
+
+  const fitAgainst = [
+    ['מחפש קיצור דרך או פתרון מהיר','Is looking for a shortcut or a quick fix'],
+    ['רוצה תכנית שמתאימה לכולם באותה מידה','Wants a one-size-fits-all plan'],
+    ['לא זמין למעקב ולתקשורת שוטפת','Isn\'t available for ongoing check-ins and communication'],
+  ].map(([he,en]) => `<li><span data-he>${he}</span><span data-en>${en}</span></li>`).join('');
+
+  return `<div class="tm-page">
+    <div class="tm-wrap">
+      <p class="label muted"><span data-he>הקבוצה</span><span data-en>The Team</span></p>
+      <h1 class="tm-h1" style="margin-top:.75rem"><span data-he>מי שמצטרף ל-Team Haim, לא רץ לבד.</span><span data-en>Join Team Haim, and you don't run alone.</span></h1>
+      <p class="tm-intro">
+        <span data-he>Team Haim היא קבוצת הרצים שאני בונה יחד עם כל מי שמתאמן איתי — תהליך אישי, שקוף ועקבי, שמלווה אתכם מהשיחה הראשונה ועד קו הסיום.</span>
+        <span data-en>Team Haim is the community of runners I build together with everyone who trains with me — a personal, transparent, consistent process from the first call to the finish line.</span>
+      </p>
+      <div class="tm-steps">${steps}</div>
+      <div class="tm-fit">
+        <div>
+          <p class="tm-fit-h"><span data-he>למי זה מתאים</span><span data-en>Who this is for</span></p>
+          <ul class="tm-fit-l">${fitFor}</ul>
+        </div>
+        <div>
+          <p class="tm-fit-h"><span data-he>למי זה פחות מתאים</span><span data-en>Who this isn't for</span></p>
+          <ul class="tm-fit-l">${fitAgainst}</ul>
+        </div>
+      </div>
+      <div class="tm-close">
+        <p class="tm-close-t">
+          <span data-he>אם הגעת עד כאן, כנראה שאתה כבר יודע שיש בך יותר. אני כאן כדי לעזור לך להוציא את זה בצורה מסודרת, חכמה ועקבית.</span>
+          <span data-en>If you've read this far, you probably already know you have more in you. I'm here to help you bring it out in a structured, smart, and consistent way.</span>
+        </p>
+        <a href="#/contact" class="btn-primary label"><span data-he>אני רוצה להצטרף</span><span data-en>I want to join</span>${arrR()}</a>
+      </div>
+    </div>
+  </div>${footer()}`;
+}
+
+/* ── PROGRAMS ── */
+function buildPrograms() {
+  const P = [
+    { idx:'01', typeHe:'ללא עלות', typeEn:'Free',
+      nHe:'שיחת היכרות', nEn:'Discovery Call',
+      dHe:'שיחה קצרה להכיר, להבין את המטרות שלך ואת רמת הריצה הנוכחית, ולבדוק יחד שיש התאמה לפני שמתחילים.',
+      dEn:'A short call to get acquainted, understand your goals and current level, and check that it\'s a fit before we begin.',
+      specs:[{kh:'משך',ke:'Duration',vh:'20 דקות',ve:'20 minutes'},{kh:'מיקום',ke:'Location',vh:'זום או טלפון',ve:'Zoom or phone'}],
+      pH:'ללא עלות', pE:'Free', pnH:'שיחת היכרות', pnE:'Introductory call' },
+    { idx:'02', typeHe:'התוכנית המרכזית', typeEn:'Core program',
+      nHe:'ליווי אישי חודשי', nEn:'Monthly Personal Coaching',
+      dHe:'תכנית אימון מותאמת אישית, שמתעדכנת באופן שוטף לפי הביצוע והנתונים שלך. כולל ליווי צמוד לאורך כל השבוע, מעקב Strava ומשוב שבועי.',
+      dEn:'A fully personalized training plan, continuously updated based on your performance and data. Includes close support throughout the week, Strava tracking, and weekly feedback.',
+      specs:[{kh:'עדכון תכנית',ke:'Plan updates',vh:'שבועי',ve:'Weekly'},{kh:'תקשורת',ke:'Communication',vh:'וואטסאפ שוטף',ve:'Ongoing WhatsApp'},{kh:'התחייבות',ke:'Commitment',vh:'חודשי',ve:'Month-to-month'}],
+      pH:'צור קשר לפרטים', pE:'Contact for details', pnH:'מחיר אישי', pnE:'Individual pricing' },
+    { idx:'03', typeHe:'תוכנית ממוקדת', typeEn:'Focused block',
+      nHe:'הכנה לתחרות', nEn:'Race Preparation Block',
+      dHe:'תהליך ממוקד לקראת תחרות מטרה — בניית עומסים, חידוד קצב ומוכנות מנטלית ליום התחרות.',
+      dEn:'A focused block leading up to a target race — building load, sharpening pace, and mental readiness for race day.',
+      specs:[{kh:'משך',ke:'Duration',vh:'6–10 שבועות',ve:'6–10 weeks'},{kh:'מתאים ל',ke:'Best for',vh:'תחרות מטרה מוגדרת',ve:'A defined target race'}],
+      pH:'צור קשר לפרטים', pE:'Contact for details', pnH:'מחיר אישי', pnE:'Individual pricing' },
+  ];
+  const rows = P.map(w => {
+    const specs = w.specs.map(s => `<div><p class="label wsr-sk muted"><span data-he>${s.kh}</span><span data-en>${s.ke}</span></p><p class="wsr-sv"><span data-he>${s.vh}</span><span data-en>${s.ve}</span></p></div>`).join('');
+    return `<div class="ws-row">
+      <div class="wsr-l">
+        <p class="label wsr-type muted">${w.idx} — <span data-he>${w.typeHe}</span><span data-en>${w.typeEn}</span></p>
+        <h2 class="wsr-name"><span data-he>${w.nHe}</span><span data-en>${w.nEn}</span></h2>
+        <p class="wsr-desc"><span data-he>${w.dHe}</span><span data-en>${w.dEn}</span></p>
+        <div class="wsr-specs label">${specs}</div>
+      </div>
+      <div class="wsr-r">
+        <div>
+          <p class="wsr-price"><span data-he>${w.pH}</span><span data-en>${w.pE}</span></p>
+          <p class="label wsr-pnote muted"><span data-he>${w.pnH}</span><span data-en>${w.pnE}</span></p>
+        </div>
+        <a href="#/contact" class="btn-ws label"><span data-he>לפרטים והצטרפות</span><span data-en>Get details & join</span></a>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="ws-page">
+    <div class="ws-wrap">
+      <p class="label muted"><span data-he>תוכניות ליווי</span><span data-en>Coaching Programs</span></p>
+      <h1 class="ws-h1" style="margin-top:.75rem"><span data-he>מסלולים לכל שלב</span><span data-en>A path for every stage</span></h1>
+      <p class="ws-intro">
+        <span data-he>מהשיחה הראשונה ועד יום התחרות. כל מסלול כולל תכנית מותאמת אישית וליווי אמיתי לאורך הדרך.</span>
+        <span data-en>From the first conversation to race day. Every path includes a personalized plan and real support along the way.</span>
+      </p>
+      <div class="ws-list">${rows}</div>
+    </div>
+  </div>${footer()}`;
+}
+
+/* ── CONTACT ── */
+function buildContact() {
+  return `<div class="ct-page">
+    <div class="ct-wrap">
+      <div class="ct-grid">
+        <div class="ct-l">
+          <h1 class="ct-h1"><span data-he>יצירת קשר</span><span data-en>Contact</span></h1>
+          <p class="ct-sub"><span data-he>מוכן להתחיל? כתוב לי ישירות — אחזור אליך תוך יום עסקים.</span><span data-en>Ready to start? Reach out directly — I'll get back to you within a business day.</span></p>
+          <div class="ct-chs label">
+            <a href="https://wa.me/972558814177?text=%D7%94%D7%99%20%D7%99%D7%95%D7%A0%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%9F" target="_blank" rel="noopener" class="ct-ch">
+              <span class="ct-ch-k"><span data-he>וואטסאפ</span><span data-en>WhatsApp</span></span>
+              <span class="ct-ch-v">055-881-4177</span>
+            </a>
+            <a href="mailto:info.teamhaim@gmail.com" class="ct-ch">
+              <span class="ct-ch-k"><span data-he>אימייל</span><span data-en>Email</span></span>
+              <span class="ct-ch-v">info.teamhaim@gmail.com</span>
+            </a>
+            <div class="ct-ch" style="cursor:default">
+              <span class="ct-ch-k"><span data-he>ליווי</span><span data-en>Coaching</span></span>
+              <span class="ct-ch-v"><span data-he>אונליין — מכל מקום</span><span data-en>Online — from anywhere</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="ct-r">
+          <p class="ct-fh"><span data-he>שלח הודעה</span><span data-en>Send a message</span></p>
+          <form data-cf>
+            <div class="fg-row">
+              <div class="fg">
+                <label class="label" for="cf-n"><span data-he>שם מלא</span><span data-en>Full name</span></label>
+                <input type="text" id="cf-n" name="name" required autocomplete="name"/>
+              </div>
+              <div class="fg">
+                <label class="label" for="cf-e"><span data-he>אימייל</span><span data-en>Email</span></label>
+                <input type="email" id="cf-e" name="email" required autocomplete="email"/>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="label" for="cf-s"><span data-he>נושא</span><span data-en>Subject</span></label>
+              <select id="cf-s" name="subject" required>
+                <option value="" disabled selected>—</option>
+                <option value="discovery"><span data-he>שיחת היכרות</span><span data-en>Discovery call</span></option>
+                <option value="monthly"><span data-he>ליווי אישי חודשי</span><span data-en>Monthly personal coaching</span></option>
+                <option value="race"><span data-he>הכנה לתחרות</span><span data-en>Race preparation</span></option>
+                <option value="other"><span data-he>אחר</span><span data-en>Other</span></option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="label" for="cf-m"><span data-he>הודעה</span><span data-en>Message</span></label>
+              <textarea id="cf-m" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn-send label">
+              <span data-he>שלח</span><span data-en>Send</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>${footer()}`;
+}
+
+applyLang(lang);
+route();
+</script>
 </body>
 </html>
